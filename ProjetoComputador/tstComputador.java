@@ -2,7 +2,7 @@ public class tstComputador {
     public static void main(String arg[]){ //Class Loader | Funciona como main, normal
         
         Computador vivobook = new Computador(); // Metódo Construtor = Declaração da Classe 
-        Leitura lei = new Leitura();
+        Leitura lei = Leitura.geraLeitura();
 
         vivobook.setArmazenamento(Integer.parseInt(lei.entDados("Armazenamento em TB = ")));
 
@@ -11,6 +11,7 @@ public class tstComputador {
         vivobook.getPlacaDeVideo().setFamilia(lei.entDados("Da placa de video, qual é a Familia ? "));
         vivobook.getPlacaDeVideo().setSerie(Integer.parseInt(lei.entDados("Ainda ná placa, qual o numero de série dela ? ")));
 
+        
        /*
         instancia a variável na RAM. Para isso
         informa ao S.O. as dimensões desta variável, que depois passa se chamar Objeto.

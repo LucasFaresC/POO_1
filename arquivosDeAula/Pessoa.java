@@ -1,9 +1,45 @@
 public class Pessoa{ //Classe Entidade
 
-	private int cpf = 0;
-	private String nome = "";
+	private int cpf;
+	private String nome;
+	private Endereco ender;
 	
-	private Endereco ender = new Endereco();
+//========================================		
+	public Pessoa(){
+		System.out.println("\nConstrutor Default\n");
+		cpf = 0;
+		nome = "";
+		ender = new Endereco();
+	}
+	
+	//Sobrecarga
+	public Pessoa(int cpf, String nome, Endereco ender){
+		System.out.println("\nConstrutor Sobrec - 1 \n");		
+		this.cpf = cpf;
+		this.nome = nome;
+		this.ender = ender;
+		//this.ender.setRua(rua);		
+		//this.ender.setNum(num); 	
+	}
+	
+	//Sobrecarga
+	public Pessoa(String n, int c, Endereco e){
+		System.out.println("\nConstrutor Sobrec - 2 \n");		
+		this.cpf = c;
+		this.nome = n;
+		this.ender = e;
+	}	
+	
+//========================================
+
+	public void impDados(){
+		System.out.println("\nimpDados() Default\n");		
+	}
+	
+	public int impDados(int x){
+		System.out.println("\nimpDados Sobrec - 1 \n "+ x);		
+		return 0;
+	}
 	
 //========================================
 	public Endereco getEnder(){
@@ -13,7 +49,6 @@ public class Pessoa{ //Classe Entidade
 	public void setEnder(Endereco ender){
 		this.ender = ender;	
 	}
-//========================================	
 	
 	public int getCpf(){
 		return cpf;		

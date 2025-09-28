@@ -1,46 +1,47 @@
-public class Pessoa{ //Classe Entidade
+//public abstract class Pessoa{ //Classe Entidade
 
+public class Pessoa{
+	
 	private int cpf;
 	private String nome;
 	private Endereco ender;
 	
-//========================================		
+	//private final int x;// = 10;
+	
+	protected int id;
+	
+//========================================	
+	public void impDados(){
+		System.out.println("\nimpDados() da Classe-Mãe Pessoa");		
+	}
+//========================================	
+
+
+	
 	public Pessoa(){
-		System.out.println("\nConstrutor Default\n");
+		System.out.println("\nConstrutor Default - Super\n");
 		cpf = 0;
 		nome = "";
 		ender = new Endereco();
+		id = 0;
+		//x = 34;
 	}
 	
 	//Sobrecarga
-	public Pessoa(int cpf, String nome, Endereco ender){
+	public Pessoa(int cpf, String nome, Endereco ender, int id){
 		System.out.println("\nConstrutor Sobrec - 1 \n");		
 		this.cpf = cpf;
 		this.nome = nome;
 		this.ender = ender;
+		this.id  = id;
+		
 		//this.ender.setRua(rua);		
 		//this.ender.setNum(num); 	
 	}
 	
-	//Sobrecarga
-	public Pessoa(String n, int c, Endereco e){
-		System.out.println("\nConstrutor Sobrec - 2 \n");		
-		this.cpf = c;
-		this.nome = n;
-		this.ender = e;
-	}	
-	
 //========================================
 
-	public void impDados(){
-		System.out.println("\nimpDados() Default\n");		
-	}
-	
-	public int impDados(int x){
-		System.out.println("\nimpDados Sobrec - 1 \n "+ x);		
-		return 0;
-	}
-	
+
 //========================================
 	public Endereco getEnder(){
 		return ender;		
@@ -53,6 +54,10 @@ public class Pessoa{ //Classe Entidade
 	public int getCpf(){
 		return cpf;		
 	}
+	public int getId(){
+		return id;		
+	}
+	
 	public String getNome(){
 		return nome;		
 	}
@@ -64,6 +69,10 @@ public class Pessoa{ //Classe Entidade
 		else{
 			System.out.println("\nCPF deve ser positivo");
 		}
+	}
+	
+	public void setId(int id){
+		this.id = id;		
 	}
 	
 	public void setNome(String nome){

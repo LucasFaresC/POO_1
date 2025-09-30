@@ -8,9 +8,11 @@ public class TstWrap {
 
 
     public static void main(String arg[]){
-
+        
     }
 
-
+    public void menu(){
+        System.out.println();
+    }
 
 }

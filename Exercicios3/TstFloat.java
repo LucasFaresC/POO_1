@@ -1,24 +1,15 @@
 // Lucas Fares Corrêa Auad Pereira
 
 public class TstFloat {
-    private float flutuante;
-    
-    public float getFlutuante() {
-        return flutuante;
-    }
-
-    public void setFlutuante(float flutuante) {
-        this.flutuante = flutuante;
-    }
-
     /*
-    i) Classe Float metodo toString
-    ii) floatPraString retorna o valor de ponto flutuante formatado em String
+    i) Classe Float metodo toString e parseFloat
+    ii) converteStringFloat tranforma uma string em float, e um float em uma string
     iii) Referencia Documentação da Oracle
      */
-    public String floatPraString(float f){
-        return Float.toString(f);
+    public void  converteStringFloat(float f, String s){
+        String palavra = Float.toString(f);
+        float flutuante = Float.parseFloat(s);
     }
+    
 
-    public 
 }

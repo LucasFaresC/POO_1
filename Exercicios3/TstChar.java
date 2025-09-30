@@ -1,7 +1,6 @@
 // Lucas Fares Corrêa Auad Pereira
 
 public class TstChar {
-    private Character caracter;
 
     /*
     i) Classe Character: metodo .isDIgit 
@@ -23,12 +22,6 @@ public class TstChar {
     }
 
 
-    public Character getCaracter(){
-        return this.caracter;
-    }
-
-    public void setCaracter(char c){
-        this.caracter = c;
-    }
+    
 
 }

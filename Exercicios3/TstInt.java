@@ -7,7 +7,7 @@ public class TstInt {
     iii) referencia: https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html
      */
 
-    public int stringPraInt(String palavra, int i){
+    public int stringPraInt(String palavra){
         return Integer.parseInt(palavra);
     }
     

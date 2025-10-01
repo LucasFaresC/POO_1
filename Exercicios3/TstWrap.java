@@ -24,13 +24,46 @@ public class TstWrap{
         switch(opcao){
             case 1:
                 String var = teste_wrappers.entDados("Digite um número inteiro: ");
-                System.out.println("metodo ");
+                int var_int = teste_wrappers.getTstInt().stringPraInt(var);
+                var = teste_wrappers.getTstInt().intPraBinarioEmString(var_int);
+                
+                System.out.println("Seu numero pra String: ''" + var_int + "'' e esse mesmo numero em binario é "+ var);
+                break;
 
+            case 2:
+                String sentenca = teste_wrappers.entDados("Digite um ")
+                break;
+            case 3:
 
+                break;
 
+            case 4:
 
+                break;
 
+            case 5:
 
+                break;
+
+            case 6:
+
+                break;
+
+            case 7:
+
+                break;
+
+            case 8:
+
+                break;
+
+            case 0:
+
+                break;
+
+            default:
+                System.out.println("Opção invalida, reinicie o programa");
+                break;
 
         }
     }

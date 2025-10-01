@@ -31,33 +31,79 @@ public class TstWrap{
                 break;
 
             case 2:
-                String sentenca = teste_wrappers.entDados("Digite um ")
+                boolean a = Boolean.parseBoolean(teste_wrappers.entDados("True \n(False\nA = "));
+                boolean b = Boolean.parseBoolean(teste_wrappers.entDados("B = "));
+
+                boolean and = teste_wrappers.getTstBool().operadorAND(a, b);
+                boolean or = teste_wrappers.getTstBool().operadorOR(a, b);
+
+                System.out.println("a + b = "+ or+ "; a x b =  "+ and);
+
                 break;
             case 3:
+
+                String charInput = teste_wrappers.entDados("Digite um caractere: ");
+                
+                if (!charInput.isEmpty()) {
+
+                    char c = charInput.charAt(0);
+                    boolean ehDigito = teste_wrappers.getTstChar().ehDigito(c);
+                    char maiusculo = teste_wrappers.getTstChar().maiusculo(c);
+                
+                    System.out.println("Caractere '" + c + "' é dígito? " + ehDigito);
+                    System.out.println("Em maiúsculo: '" + maiusculo + "'");
+                    }
 
                 break;
 
             case 4:
 
+                String strDouble = teste_wrappers.entDados("Digite um número double: ");
+                teste_wrappers.getTstDoub().converterEVerificar(strDouble);
+                
+                System.out.println("Conversão double realizada com sucesso!");
+                    
                 break;
 
             case 5:
+
+                String strDecimal = teste_wrappers.entDados("Digite um número decimal para byte: ");
+                String strHex = teste_wrappers.entDados("Digite um número hexadecimal para byte (ex: 0x1F): ");
+            
+                teste_wrappers.getTstByte().converterBytes(strDecimal, strHex);
+                System.out.println("Conversões byte realizadas com sucesso!");
 
                 break;
 
             case 6:
 
+                String strShort = teste_wrappers.entDados("Digite um número para short: ");
+                teste_wrappers.getTstShort().converterEInverter(strShort);
+        
+                System.out.println("Conversão short realizada com sucesso!");
                 break;
 
             case 7:
-
+                String strFloat = teste_wrappers.entDados("Digite uma string para converter para float: ");
+                float numFloat = Float.parseFloat(teste_wrappers.entDados("Digite um float para converter para string: "));
+                
+                teste_wrappers.getTstFloat().converteStringFloat(numFloat, strFloat);
+                System.out.println("Conversões float realizadas com sucesso!");
+                
                 break;
 
             case 8:
 
+                String strLong = teste_wrappers.entDados("Digite um número long: ");
+                teste_wrappers.getTstLong().converterEContarZeros(strLong);
+                
+                System.out.println("Conversão long realizada com sucesso!");
+                
                 break;
 
             case 0:
+
+                System.out.println("Saindo do programa...");
 
                 break;
 

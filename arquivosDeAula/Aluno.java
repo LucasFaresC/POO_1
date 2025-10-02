@@ -26,7 +26,7 @@ public class Aluno extends Pessoa implements Calculadora, Mostra{ //Classe Entid
 
 	
 	public void acessaId(){
-		id = 25;
+		int id = 25;
 		System.out.println("\nID em Em aluno - protected: "+ id);
 		
 	}

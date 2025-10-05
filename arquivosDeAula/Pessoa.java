@@ -6,20 +6,23 @@ public class Pessoa{
 	public int getCpf(){
 		return cpf;		
 	}
-	public String getNome()throws NomeParException{
-		if(nome.length()%2 != 0){
-			throw new NomeParException();
-		}else{
-			return nome;
-		}
+	public String getNome(){
+		return nome;		
 	}
 //===================================
 // THROWS (com "S"): "AVISO"--> POSSO lancar um objeto do tipo tal
 // THROW (sem "S"): "ORDEM" --> LANCE o objeto do tipo tal
+
+// PADRÃO DE PROJETO DE SOFTWARE: FACTORY
 	
-	public void setCpf(int cpf) throws CpfPeqException{
+	public void setCpf(int cpf) throws CpfPeqException, CpfGrdException{
 		if(cpf>0){
-			this.cpf = cpf;		
+			if(cpf <=100){
+				this.cpf = cpf;		
+			}
+			else{
+				throw new CpfGrdException();
+			}
 		}
 		else{
 			throw new CpfPeqException();
@@ -27,12 +30,7 @@ public class Pessoa{
 	}
 	
 	
-	public void setNome(String nome) throws NomeGrdException{
-		if(nome.length() > 10){
-			throw new NomeGrdException();
-		}else{
-			this.nome = nome;		
-
-		}
+	public void setNome(String nome){
+		this.nome = nome;		
 	}
 }

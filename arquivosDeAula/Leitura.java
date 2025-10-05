@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Leitura{
 
-	public String entDados(String rotulo){
+	public String entDados(String rotulo) throws IOException{
 		
 		System.out.println(rotulo);
 		
@@ -13,12 +13,12 @@ public class Leitura{
 		
 		String ret = "";
 		
-		try{
+		//try{
 				ret = buff.readLine();
-		}
-		catch(IOException ioe){
-			System.out.println("\nERRO: JVM - RAM");
-		}
+		//}
+		//catch(IOException ioe){
+		//	System.out.println("\nERRO: JVM - RAM");
+		//}
 		
 		return ret;
 	} 

@@ -4,71 +4,47 @@
 public class TstVeic {
     public static void main(String[] args) {
         Leitura leitura = new Leitura();
-
-        Passeio passeio1 = new Passeio();
+        Passeio passeio = new Passeio();
+        Carga carga = new Carga();
         
-        System.out.println("=== CADASTRO VEÍCULO DE PASSEIO ===");
-        passeio1.setPlaca(leitura.entDados("Placa: "));
-        passeio1.setMarca(leitura.entDados("Marca: "));
-        passeio1.setModelo(leitura.entDados("Modelo: "));
-        passeio1.setCor(leitura.entDados("Cor: "));
+        System.out.println("\n<< Vamos Cadastrar o veiculo de Pesseio >>");
+        passeio.setPlaca(leitura.entDados("Placa: "));
+        passeio.setMarca(leitura.entDados("Marca: "));
+        passeio.setModelo(leitura.entDados("Modelo: "));
+        passeio.setCor(leitura.entDados("Cor: "));
         
-        String qtdRodasStr = leitura.entDados("Quantidade de rodas: ");
-        passeio1.setQtdRodas(Integer.parseInt(qtdRodasStr));
+        passeio.setQtdRodas(Integer.parseInt(leitura.entDados("Quantidade de rodas: ")));
+        passeio.setVelocMax(Integer.parseInt(leitura.entDados("Velocidade máxima (km/h): ")));
+        passeio.getMotor().setQtdPist(Integer.parseInt(leitura.entDados("Quantidade de pistões do motor: ")));
+        passeio.getMotor().setPotencia(Integer.parseInt(leitura.entDados("Potência do motor: ")));
+        passeio.setQtdePassageiro(Integer.parseInt(leitura.entDados("Quantidade de passageiros: ")));
+        passeio.setDataCadastro(leitura.entDados("Data de cadastro: "));
         
-        String velocMaxStr = leitura.entDados("Velocidade máxima (km/h): ");
-        passeio1.setVelocMax(Integer.parseInt(velocMaxStr));
+        System.out.println("\n<< Veiculo de Passeio >>");
+        System.out.println("Placa: " + passeio.getPlaca());
+        System.out.println("Velocidade em M/h: " + passeio.calcVel());
+        System.out.println("Cálculo (soma letras): " + passeio.calcular());
         
-        String qtdPistStr = leitura.entDados("Quantidade de pistões do motor: ");
-        passeio1.getMotor().setQtdPist(Integer.parseInt(qtdPistStr));
+        System.out.println("\n<< Cadastro do veiculo de Carga >>");
         
-        String potenciaStr = leitura.entDados("Potência do motor: ");
-        passeio1.getMotor().setPotencia(Integer.parseInt(potenciaStr));
+        carga.setPlaca(leitura.entDados("Placa: "));
+        carga.setMarca(leitura.entDados("Marca: "));
+        carga.setModelo(leitura.entDados("Modelo: "));
+        carga.setCor(leitura.entDados("Cor: "));
+        carga.setQtdRodas(Integer.parseInt(leitura.entDados("Quantidade de rodas: ")));
+        carga.setVelocMax(Integer.parseInt(leitura.entDados("Velocidade máxima (km/h): ")));
+        carga.getMotor().setQtdPist(Integer.parseInt(leitura.entDados("Quantidade de pistões do motor: ")));
+        carga.getMotor().setPotencia(Integer.parseInt(leitura.entDados("Potência do motor: ")));
+        carga.setTara(Integer.parseInt(leitura.entDados("Tara: ")));
+        carga.setCargaMax(Integer.parseInt(leitura.entDados("Carga máxima: ")));
+        carga.setDataCadastro(leitura.entDados("Data de cadastro: "));
         
-        String passageirosStr = leitura.entDados("Quantidade de passageiros: ");
-        passeio1.setQtdePassageiro(Integer.parseInt(passageirosStr));
         
-        passeio1.setDataCadastro(leitura.entDados("Data de cadastro: "));
-        
-        // Exibindo resultados
-        System.out.println("\n=== VEÍCULO DE PASSEIO ===");
-        System.out.println("Placa: " + passeio1.getPlaca());
-        System.out.println("Velocidade em M/h: " + passeio1.calcVel());
-        System.out.println("Cálculo (soma letras): " + passeio1.calcular());
-        
-        // Criando veículo de carga
-        Carga carga1 = new Carga();
-        
-        System.out.println("\n=== CADASTRO VEÍCULO DE CARGA ===");
-        carga1.setPlaca(leitura.entDados("Placa: "));
-        carga1.setMarca(leitura.entDados("Marca: "));
-        carga1.setModelo(leitura.entDados("Modelo: "));
-        carga1.setCor(leitura.entDados("Cor: "));
-        
-        qtdRodasStr = leitura.entDados("Quantidade de rodas: ");
-        carga1.setQtdRodas(Integer.parseInt(qtdRodasStr));
-        
-        velocMaxStr = leitura.entDados("Velocidade máxima (km/h): ");
-        carga1.setVelocMax(Integer.parseInt(velocMaxStr));
-        
-        qtdPistStr = leitura.entDados("Quantidade de pistões do motor: ");
-        carga1.getMotor().setQtdPist(Integer.parseInt(qtdPistStr));
-        
-        potenciaStr = leitura.entDados("Potência do motor: ");
-        carga1.getMotor().setPotencia(Integer.parseInt(potenciaStr));
-        
-        String taraStr = leitura.entDados("Tara: ");
-        carga1.setTara(Integer.parseInt(taraStr));
-        
-        String cargaMaxStr = leitura.entDados("Carga máxima: ");
-        carga1.setCargaMax(Integer.parseInt(cargaMaxStr));
-        
-        carga1.setDataCadastro(leitura.entDados("Data de cadastro: "));
         
         // Exibindo resultados
-        System.out.println("\n=== VEÍCULO DE CARGA ===");
-        System.out.println("Placa: " + carga1.getPlaca());
-        System.out.println("Velocidade em Cm/h: " + carga1.calcVel());
-        System.out.println("Cálculo (soma numérica): " + carga1.calcular());
+        System.out.println("\n<< Veiculo de Carga >>");
+        System.out.println("Placa: " + carga.getPlaca());
+        System.out.println("Velocidade em Cm/h: " + carga.calcVel());
+        System.out.println("Cálculo (soma numérica): " + carga.calcular());
     }
 }

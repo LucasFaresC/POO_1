@@ -1,5 +1,4 @@
 // Lucas Fares Correa Auad Pereira
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -17,6 +16,15 @@ public class Ingresso {
         // Construtor default
     }
 
+    public Ingresso(int id, Sessao ses, int fil, int pol, float preCom, boolean meia, LocalDateTime dhc){
+        this.id = id;
+        this.sessao = ses;
+        this.fileira = fil;
+        this.poltrona = pol;
+        this.precoCompra = preCom;
+        this.meia = meia;
+        this.dataHoraCompra = dhc;
+    }
     // FAZER SOBRECARGA
 
     // Getters e Setters

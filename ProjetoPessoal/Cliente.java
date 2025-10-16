@@ -2,17 +2,31 @@
 
 public class Cliente {
     private int cpf;
+    private String senha;
     private String nome;
     private String email;
-    private Ingresso[] ingressos;
+    private Ingresso ingressos[];
     private boolean aptoMeia;
 
     // Sobrecarga
-    public Cliente() {
-        // IMPLEMENTAR SOBRECARGA
+    public Cliente(int c, String s, String n, String e, boolean a) {
+        this.cpf = c;
+        this.senha = s;
+        this.nome = n;
+        this.email = e;
+        this.aptoMeia = a;
     }
 
     // Getters e Setters
+
+    public String getSenha(){
+        return senha;
+    }
+
+    public void setSenha(String sen){
+        this.senha = sen;
+    }
+
     public int getCpf() {
         return cpf;
     }
@@ -55,6 +69,6 @@ public class Cliente {
 
     //Sobrescrita 
     public String toString() {
-        return "Cliente: " + nome + " (CPF: " + cpf + ")";
+        return "Cliente: " + nome + " email: " + email;
     }
 }

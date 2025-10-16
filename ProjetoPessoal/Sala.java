@@ -1,7 +1,7 @@
 
 // Lucas Fares Corrêa Auad Pereira
 
-public abstract class Sala {
+public abstract class Sala{
     private int id;
     private int capacidade;
     private int poltronasCadeirantes;
@@ -11,6 +11,12 @@ public abstract class Sala {
     private int quantidadeSessoes;
     private Sessao sessoes[] = new Sessao[quantidadeSessoes];
     private int sessaoAtual = 0;
+    private float precoBase = 14.50f;
+
+    
+    public Sala(){
+
+    }
 
     // Sobrecarga
     public Sala(int i, int cap, int pol_cade, int qa, int fil, int pol ,int qtd_sessoes, int ses_atual) {
@@ -25,11 +31,11 @@ public abstract class Sala {
         this.sessoes = new Sessao[quantidadeSessoes];
     }
 
-    public void avancarSessao(){
+    public void avancarSessao()throws SessaoInvalidaException{
         if(sessaoAtual < 4){
             this.sessaoAtual += 1;
         }else{
-            throw SessaoInvalida
+            System.out.print("Sessão invalida");
         }
     }
 
@@ -90,4 +96,11 @@ public abstract class Sala {
         this.sessoes = sessoes;
     }
 
+    public void setPrecoBase(float p){
+        this.precoBase = p;
+    }
+
+    public float getPrecoBase(){
+        return precoBase;
+    }
 }

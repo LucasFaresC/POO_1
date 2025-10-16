@@ -6,16 +6,19 @@ public class Sessao {
     private int id;
     private Filme filme;
     private boolean cheio;
-    private boolean[][] poltronasOcupadas;
+    private boolean poltronasOcupadas[][];
     private LocalDate data;
     private LocalTime hora;
 
-    public Sessao() {
-        // Construtor default
-        this.poltronasOcupadas = new boolean[10][10]; // 10 por 10
-        this.cheio = false;
-    }
 
+    // Sobrecarga
+    public Sessao(int i, Filme f, boolean c, LocalDate d, LocalTime h){
+        this.id = i;
+        this.filme = f;
+        this.cheio = c;
+        this.data = d;
+        this.hora = h;
+    }
     // Getters e Setters
     public int getId() {
         return id;
@@ -70,11 +73,6 @@ public class Sessao {
         return "Sessao ID: " + id + " - " + filme.getNome() + " - " + data + " " + hora;
     }
 
-    // Método para verificar se a sessão está acontecendo agora
-    public void  sessaoAgora() {
-        // implementar ainda
-        
-    }
 
     // Método para verificar se uma poltrona está livre
     public boolean poltronaLivre(int fileira, int poltrona) {

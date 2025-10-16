@@ -15,7 +15,8 @@ public class Ingresso {
     public Ingresso() {
         // Construtor default
     }
-
+    
+    //SOBRECARGA
     public Ingresso(int id, Sessao ses, int fil, int pol, float preCom, boolean meia, LocalDateTime dhc){
         this.id = id;
         this.sessao = ses;
@@ -25,7 +26,6 @@ public class Ingresso {
         this.meia = meia;
         this.dataHoraCompra = dhc;
     }
-    // FAZER SOBRECARGA
 
     // Getters e Setters
     public int getId() {

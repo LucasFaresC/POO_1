@@ -18,6 +18,12 @@ public class Filme {
         // Construtor default
     }
 
+
+    // Sobrecarga
+    public Filme(int i, String n, String s, String d, boolean leg, boolean dub, boolean ex, LocalDate estr, LocalDate fimex){
+        this.id = 
+    }
+
     // Getters e Setters
     public int getId() {
         return id;
@@ -97,5 +103,11 @@ public class Filme {
 
     public void setFimExibicoes(LocalDate fimExibicoes) {
         this.fimExibicoes = fimExibicoes;
+    }
+
+
+    // Sobrescrita
+    public String toString() {
+        return nome + "\nSinopse: " + sinopse + "\nDuração: "+ duracaoMin + " min";
     }
 }

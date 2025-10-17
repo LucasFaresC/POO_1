@@ -21,7 +21,10 @@ public class Filme {
 
     // Sobrecarga
     public Filme(int i, String n, String s, String d, boolean leg, boolean dub, boolean ex, LocalDate estr, LocalDate fimex){
-        this.id = 
+        this.id = i;
+        this.sinopse = s;
+        this.nome = n;
+        this.diretor = d;
     }
 
     // Getters e Setters

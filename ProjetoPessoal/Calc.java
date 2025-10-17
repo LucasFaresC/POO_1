@@ -2,5 +2,4 @@
 
 public interface Calc {
     float calcularPreco(float precoBase);
-    float calcularDesconto(float preco, float percentual);
 }

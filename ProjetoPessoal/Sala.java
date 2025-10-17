@@ -8,7 +8,7 @@ public abstract class Sala{
     private int qtdeAltofalante;
     private int fileiras;
     private int poltronas;
-    private int quantidadeSessoes;
+    private int quantidadeSessoes = 3;
     private Sessao sessoes[] = new Sessao[quantidadeSessoes];
     private int sessaoAtual = 0;
     private float precoBase = 14.50f;
@@ -31,7 +31,7 @@ public abstract class Sala{
         this.sessoes = new Sessao[quantidadeSessoes];
     }
 
-    public void avancarSessao()throws SessaoInvalidaException{
+    public void avancarSessao(){ 
         if(sessaoAtual < 4){
             this.sessaoAtual += 1;
         }else{

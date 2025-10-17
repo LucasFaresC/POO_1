@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Ingresso {
     private int id;
     private Sessao sessao;
-    private Cliente cliente;
     private int fileira;
     private int poltrona;
     private float precoCompra;
@@ -42,14 +41,6 @@ public class Ingresso {
 
     public void setSessao(Sessao sessao) {
         this.sessao = sessao;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public int getFileira() {

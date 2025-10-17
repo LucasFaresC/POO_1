@@ -1,7 +1,8 @@
 // Lucas Fares Corrêa Auad Pereira
+
 public class SalaIMAX extends Sala implements Calc{
     private boolean poltronaPremium;
-    private float taxaAdicional;
+    private float taxaAdicional = 32.50f;
 
     public SalaIMAX() {
         super();
@@ -30,16 +31,8 @@ public class SalaIMAX extends Sala implements Calc{
     }
 
     //Sobrecarga
-    public float calcularPrecoIngresso(float precoBase) {
+    public float calcularPreco(float precoBase) {
         return precoBase + taxaAdicional;
     }
 
-    //Sobrecarga
-    public float calcularPrecoIngresso(float precoBase, boolean usarPoltronaPremium) {
-        float preco = precoBase + taxaAdicional;
-        if (usarPoltronaPremium && poltronaPremium) {
-            preco += 10.0f; // Acréscimo para poltrona premium
-        }
-        return preco;
-    }
 }

@@ -52,7 +52,7 @@ public class Principal{
 
                     while(true){
                         try{
-                            var = Integer.parseInt(leitura.entDados(">>> "));
+                            var = Integer.parseInt(leitura.entDados(">>> ")); //reflexividade
                             if(var < 1 || var > 3){
                                 throw new VarOutOfBoundsException("\nOpção deve estar entre 1 e 3!");
                             }
@@ -70,10 +70,11 @@ public class Principal{
                         cadastraFilme();
 
                     }else if(var == 2){
+                        
                         deleteFilme();
 
-                    }else if(var == 3){
-
+                    }else if(var == 3){ // Mostra todos os filmes
+                        consulFilme();
                     }                   
 
                     
@@ -188,18 +189,18 @@ public class Principal{
         
         while(true) {
             try {
-                // pq n funciona???
+                // pq n funciona??? -> Funciona sim
                 filme.setEstreia(leitura.entData("Data de estreia (aaaa-mm-dd): ")); //Reflexividade
                 
                 break;
             } catch (DateTimeParseException dtpe) {
-                System.out.println("❌ Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)");
+                System.out.println("\nERRO Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)");
             }
         }
 
         while(true) {
             try {
-                LocalDate fimExibicao = leitura.entData("\nData de fim de exibição (aaaa-mm-dd): "); //Reflexividade
+                LocalDate fimExibicao = leitura.entData("\nData de fim de exibição (aaaa-mm-dd): ");
                 
                 // validação necessaria pra ver se essa bomba não ta com a logica errada
                 if (fimExibicao.isBefore(filme.getEstreia())) {
@@ -209,9 +210,9 @@ public class Principal{
                 filme.setFimExibicoes(fimExibicao);
                 break;
             } catch (DateTimeParseException dtpe) {
-                System.out.println("\n❌ Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)");
+                System.out.println("\nERRO Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)");
             } catch (DataInvalidaException die) {
-                System.out.println("❌ " + die.getMessage());
+                System.out.println("\nERRO " + die.getMessage());
             }
         }
 
@@ -221,20 +222,47 @@ public class Principal{
         filmes.add(filme);
     }
 
-    public static Filme getFilmebyID(List<Filme> movies, int id_pra_achar){
-        for 
+    public static Filme getFilmebyID(List<Filme> movies, int alvo){
+        
+        Filme filme_alvo = new Filme();
+
+        for(Filme f: filmes){
+            if(alvo == f.getId()){
+                filme_alvo = f;
+            }
+        }
+
+        return filme_alvo;
     }
 
     public static void deleteFilme(){
 
     }    
 
+    public static void impAllFilmes(){
+        for(Filme f: filmes){
+            System.out.print("\nID: "+ f.getId() + "Titulo: "+ f.getNome());
+        }
+    }
+
     public static void consulFilme(){
+        impAllFilmes();
+        int alvo;
+
+        while(true){
+            try{
+                alvo = Integer.parseInt(leitura.entDados("\nDigite o ID, do filme que deseja consultar\n>>> "));// relfexitividade
+                break;
+            }catch(NumberFormatException nfe){
+                System.out.print("\nDigite ");
+            }
+        }
+
 
     }
 
     public static void comprarIngresso(){
-
+        
     }
 
     public static void menu(int codigo){

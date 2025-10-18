@@ -3,6 +3,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Leitura{
 
@@ -40,5 +42,20 @@ public class Leitura{
 
         return retorno;
     }
+
+    public LocalDate entData(String rotulo) {// aaaa-mm-dd
+
+        String dataStr = this.entDados(rotulo); //Reflexividade
+
+        return LocalDate.parse(dataStr); // Pode lançar DateTimeParseException
+    }
+
+    public LocalTime entHorario(String rotulo) {// (hh:mm)
+        
+        String horaStr = this.entDados(rotulo); //Reflexividade
+
+        return LocalTime.parse(horaStr); // Pode lançar DateTimeParseException
+    }
+
 
 }

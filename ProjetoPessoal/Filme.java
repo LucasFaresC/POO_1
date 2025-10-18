@@ -7,17 +7,16 @@ public class Filme {
     private String nome;
     private String sinopse;
     private String diretor;
+    private String genero;
     private int duracaoMin;
     private boolean legendado;
     private boolean dublado;
-    private boolean emExibicao;
     private LocalDate estreia;
     private LocalDate fimExibicoes;
 
     public Filme() {
         // Construtor default
     }
-
 
     // Sobrecarga
     public Filme(int i, String n, String s, String d, boolean leg, boolean dub, boolean ex, LocalDate estr, LocalDate fimex){
@@ -31,9 +30,16 @@ public class Filme {
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
+    }
+    public void setGenero(String s){
+        this.genero = s;
+    }
+
+    public String getGenero(){
+        return genero;
     }
 
     public String getNome() {
@@ -84,13 +90,6 @@ public class Filme {
         this.dublado = dublado;
     }
 
-    public boolean isEmExibicao() {
-        return emExibicao;
-    }
-
-    public void setEmExibicao(boolean emExibicao) {
-        this.emExibicao = emExibicao;
-    }
 
     public LocalDate getEstreia() {
         return estreia;
@@ -111,6 +110,6 @@ public class Filme {
 
     // Sobrescrita
     public String toString() {
-        return nome + "\nSinopse: " + sinopse + "\nDuração: "+ duracaoMin + " min";
+        return "\nID: "+ id +"\nTitulo: "+nome+ "\nSinopse: " + sinopse + "\nDuração: "+ duracaoMin + " min" +"\nGenero: "+genero;
     }
 }

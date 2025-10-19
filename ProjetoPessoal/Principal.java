@@ -14,6 +14,9 @@ public class Principal{
     static List<Filme> filmes = new ArrayList<Filme>();
     static Leitura leitura = Leitura.geraLeitura();
     static int contador_filmes = 0;
+    static int contador_salas2D = 0;
+    static int contador_salasImax = 0;
+    static int contador_salas3D = 0;
     static int var;
 
     public static void main(String args[]) {
@@ -52,7 +55,7 @@ public class Principal{
 
                     while(true){
                         try{
-                            var = Integer.parseInt(leitura.entDados(">>> ")); //reflexividade
+                            var = Integer.parseInt(leitura.entDados("\n>>> ")); //reflexividade
                             if(var < 1 || var > 3){
                                 throw new VarOutOfBoundsException("\nOpção deve estar entre 1 e 3!");
                             }
@@ -70,10 +73,9 @@ public class Principal{
                         cadastraFilme();
 
                     }else if(var == 2){
-                        
                         deleteFilme();
 
-                    }else if(var == 3){ // Mostra todos os filmes
+                    }else if(var == 3){ // Mostra todos os filmes e mostra o filme que ele quer com mais delatlhes
                         consulFilme();
                     }                   
 
@@ -95,7 +97,7 @@ public class Principal{
     
     public static void cadastraFilme(){
         Filme filme = new Filme();
-        filme.setId(contador_filmes + 1);
+        filme.setId(contador_filmes);
 
         boolean certeza = false;
 
@@ -128,7 +130,7 @@ public class Principal{
         
         // cadastro de diretor de filme
         while(!certeza){
-            filme.setDiretor(leitura.entDados("\nInsira o Diretor principal do filme: "));
+            filme.setDiretor(leitura.entDados("\nInsira o Diretor principal do filme: "));//Reflexividade
             try {
                 certeza = Integer.parseInt(leitura.entDados("\nID: "+filme.getId()+ " Diretor: "+ filme.getDiretor()+ "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
                 // não precisa de break o controle da variavel vai pelo certeza
@@ -140,7 +142,7 @@ public class Principal{
         certeza = false;
         // cadastro de genero de FILME
         while(!certeza){
-            filme.setGenero(leitura.entDados("Insira o genero do Filme"));
+            filme.setGenero(leitura.entDados("Insira o genero do Filme: "));
             try {
                 certeza = Integer.parseInt(leitura.entDados("\nID: "+filme.getId()+ " Genero: "+ filme.getGenero()+ "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
             } catch (NumberFormatException e) {
@@ -163,7 +165,7 @@ public class Principal{
         while(true){
             try {
                 
-                String perg = leitura.entDados("\n" + filme.getNome() +"tem opção de legenda ?\n(1) Sim ou (2) Não: ");//Reflexividade
+                String perg = leitura.entDados("\n" + filme.getNome() +" tem opção de legenda ?\n(1) Sim ou (2) Não: ");//Reflexividade
                 boolean resp = Integer.parseInt(perg) == 1;
                 filme.setLegendado(resp);
                 break;
@@ -177,7 +179,7 @@ public class Principal{
         while(true){
             try {
                 
-                String perg = leitura.entDados("\n filme é Dublado em PT-BR?\n(1) Sim ou (2) Não: ");
+                String perg = leitura.entDados("\nO filme é Dublado em PT-BR?\n(1) Sim ou (2) Não: ");
                 boolean resp = Integer.parseInt(perg) == 1;
                 filme.setDublado(resp);
                 break;
@@ -190,7 +192,7 @@ public class Principal{
         while(true) {
             try {
                 // pq n funciona??? -> Funciona sim
-                filme.setEstreia(leitura.entData("Data de estreia (aaaa-mm-dd): ")); //Reflexividade
+                filme.setEstreia(leitura.entData("\nData de estreia (aaaa-mm-dd): ")); //Reflexividade
                 
                 break;
             } catch (DateTimeParseException dtpe) {
@@ -203,8 +205,8 @@ public class Principal{
                 LocalDate fimExibicao = leitura.entData("\nData de fim de exibição (aaaa-mm-dd): ");
                 
                 // validação necessaria pra ver se essa bomba não ta com a logica errada
-                if (fimExibicao.isBefore(filme.getEstreia())) {
-                    throw new DataInvalidaException("Data de fim não pode ser anterior à data de estreia!");
+                if (fimExibicao.isBefore(filme.getEstreia())) { // reflexividade
+                    throw new DataInvalidaException("\nData de fim não pode ser anterior à data de estreia!");
                 }
                 
                 filme.setFimExibicoes(fimExibicao);
@@ -218,11 +220,12 @@ public class Principal{
 
 
 
-        System.out.println("Filme cadastrado com sucesso"+filme);
+        System.out.print("\nFilme cadastrado com sucesso\n=================\n"+filme);
         filmes.add(filme);
+        contador_filmes++; // pra gerar novos id
     }
 
-    public static Filme getFilmebyID(List<Filme> movies, int alvo){
+    public static Filme getFilmebyID(int alvo){
         
         Filme filme_alvo = new Filme();
 
@@ -237,28 +240,88 @@ public class Principal{
 
     public static void deleteFilme(){
 
+        impAllFilmes();
+        int alvo;
+
+        while (true) { 
+            try {
+                alvo = Integer.parseInt(leitura.entDados("Digite o ID do Filme que deseja deletar\n>>> ")); // reflexividade
+                if(!idFilmeRegistado(alvo)){
+                    System.out.println("\nO ID digitado não tem correnspondente, tente novamente");
+                    
+                }else{
+                    for(int i = 0; i < filmes.size(); i++){
+                        if(filmes.get(i).getId() == alvo){
+                            filmes.remove(i);
+                        }
+                    }
+                    break;
+                }
+                
+            } catch (NumberFormatException nfe) {
+                System.out.print("\nInsira apenas numeros inteiros.");
+            }
+        }
+
+        System.out.print("\nO filme selecionado foi deletado. ");
+
+
     }    
 
     public static void impAllFilmes(){
+        if(filmes.isEmpty()){
+            System.out.println("\nNão há filmes cadastrados.");
+            return;
+        }
+
         for(Filme f: filmes){
-            System.out.print("\nID: "+ f.getId() + "Titulo: "+ f.getNome());
+            System.out.print("\nID: "+ f.getId() + " Titulo: "+ f.getNome());
         }
     }
 
     public static void consulFilme(){
+
         impAllFilmes();
+        if(filmes.isEmpty()){
+            System.out.println("\nNão há filmes cadastrados, consulta, impossivel");
+            return;
+        }
+        
         int alvo;
 
         while(true){
             try{
-                alvo = Integer.parseInt(leitura.entDados("\nDigite o ID, do filme que deseja consultar\n>>> "));// relfexitividade
+                alvo = Integer.parseInt(leitura.entDados("\nDigite o ID, do filme que deseja consultar\n>>> "));// reflexividade
+                for(Filme f: filmes){
+                    if(alvo == f.getId()){
+                        break;
+                    }else{
+                        System.out.print("\nSeu ID digitado, não tem correspondentes. ");
+                        return;
+                    }
+
+                }
                 break;
             }catch(NumberFormatException nfe){
-                System.out.print("\nDigite ");
+                System.out.print("\nDigite Apenas numeros inteiros.");
             }
         }
 
+        System.out.print("\n"+ getFilmebyID(alvo));
 
+    }
+
+    public static boolean idFilmeRegistado(int alvo){
+
+        boolean reg = false;
+
+        for(Filme f: filmes){
+            if(f.getId() == alvo){
+                reg = true;   
+            }
+        }
+
+        return reg;
     }
 
     public static void comprarIngresso(){
@@ -268,15 +331,15 @@ public class Principal{
     public static void menu(int codigo){
         switch (codigo) {
             case 0:
-                System.out.print("\n<<< CINEMA UTPFR >>> " +LocalDateTime.now() +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Cadastrar Sala\n4) - Cadastrar Sessao");
+                System.out.print("\n<<< CINEMA UTPFR >>> " +LocalDate.now() +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Gerenciar Salas\n4) - Cadastrar Sessao");
                 break;
                 
             case 2:
                 System.out.print("\n1) - Cadastrar um Novo Filme\n2) - Deletar um Filme\n3) - Consultar Filmes");
                 break;    
             case 3:
-                // cadastro de Sala de cinema   
-                System.out.print("\n1) - Cadastro de uma Sala2D (Normal)\n2) - Cadastro de uma Sala3D\n3) - Cadastro de uma SalaIMAX");
+                //cadastro de Sala de cinema   
+                System.out.print("\n1) - Gerenciar as Salas 2D (Normal)\n2) - Gerenciar as Salas 3D\n3) - Gerenciar as Salas IMAX");
                 break;
             case 4:
                 break;

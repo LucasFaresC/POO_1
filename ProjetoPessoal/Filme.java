@@ -110,6 +110,6 @@ public class Filme {
 
     // Sobrescrita
     public String toString() {
-        return "\nID: "+ id +"\nTitulo: "+nome+ "\nSinopse: " + sinopse + "\nDuração: "+ duracaoMin + " min" +"\nGenero: "+genero;
+        return "\nID: "+ id +"\nTitulo: "+nome+ "\nSinopse: " + sinopse + "\nDuração: "+ duracaoMin + " min" +"\nGenero: "+genero+"\n";
     }
 }

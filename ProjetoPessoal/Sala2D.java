@@ -1,11 +1,12 @@
 // Lucas Fares Corrêa Auad Pereira
 
-public class Sala2D extends Sala{
+public class Sala2D extends Sala implements Calc{
     private boolean acessibilidadeSurdo;
     private boolean acessibilidadeCego;
 
-    public Sala2D() {
-        super();
+    public Sala2D(boolean acess_surdo, boolean acess_cego) {
+        this.acessibilidadeSurdo = acess_surdo;
+        this.acessibilidadeCego = acess_cego;
     }
 
     // Getters e Setters
@@ -27,7 +28,7 @@ public class Sala2D extends Sala{
 
     //Sobrescrita
     public String toString() {
-        return "Sala 2D - ID: " + getId() + " - Capacidade: " + getCapacidade();
+        return "Sala 2D - ID: " + getId() + " - Capacidade: " + getFileiras()*getPoltronas();
     }
 
     //Sobrecarga
@@ -48,5 +49,7 @@ public class Sala2D extends Sala{
         return getInfoAcessibilidade();
     }
 
-    
+    public float calcularPreco(float precoBase){
+        return precoBase;
+    }
 }

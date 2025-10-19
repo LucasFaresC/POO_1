@@ -84,6 +84,33 @@ public class Principal{
                     break;
                 case 3: 
                     menu(3);
+
+                    while(true){
+                        try{
+                            var = Integer.parseInt(leitura.entDados("\n>>> ")); //reflexividade
+                            if(var < 1 || var > 3){
+                                throw new VarOutOfBoundsException("\nOpção deve estar entre 1 e 3!");
+                            }
+                            break;
+
+                        }catch(NumberFormatException nfe){
+                            System.out.print("\n**Digite apenas numeros inteiros**\n");
+
+                        }catch(VarOutOfBoundsException voobe){
+                            System.out.println("\nErro: " + voobe.getMessage());
+                        }
+                    }
+
+                    
+                    if(var == 1){
+                        cadastrarSala2D();
+
+                    }else if(var == 2){
+                        cadastrarSala3D();
+
+                    }else if(var == 3){
+                        cadastrarSalaIMAX();
+                    }
      
      
                     break;
@@ -346,6 +373,15 @@ public class Principal{
 
         }
     }
-    
+   
+    public static void cadastrarSala2D(){
+
+    }
+    public static void cadastrarSala3D(){
+
+    }
+    public static void cadastrarSalaIMAX(){
+
+    }
 
 }

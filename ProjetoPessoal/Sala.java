@@ -3,27 +3,23 @@
 
 public abstract class Sala{
     private int id;
-    private int capacidade;
     private int poltronasCadeirantes;
-    private int qtdeAltofalante;
-    private int fileiras;
-    private int poltronas;
+    private int fileiras = 4;
+    private int poltronas = 4;
     private int quantidadeSessoes = 3;
     private Sessao sessoes[] = new Sessao[quantidadeSessoes];
     private int sessaoAtual = 0;
     private float precoBase = 14.50f;
 
     
-    public Sala(){
+    public Sala(){// contrutor default
 
     }
 
     // Sobrecarga
-    public Sala(int i, int cap, int pol_cade, int qa, int fil, int pol ,int qtd_sessoes, int ses_atual) {
+    public Sala(int i, int pol_cade, int fil, int pol ,int qtd_sessoes, int ses_atual) {
         this.id = i;
-        this.capacidade = cap;
         this.poltronasCadeirantes = pol_cade;
-        this.qtdeAltofalante = qa;
         this.fileiras = fil;
         this.poltronas = pol;
         this.quantidadeSessoes = qtd_sessoes;
@@ -48,13 +44,6 @@ public abstract class Sala{
         this.id = id;
     }
 
-    public int getCapacidade() {
-        return capacidade;
-    }
-
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
-    }
 
     public int getPoltronasCadeirantes() {
         return poltronasCadeirantes;
@@ -62,14 +51,6 @@ public abstract class Sala{
 
     public void setPoltronasCadeirantes(int poltronasCadeirantes) {
         this.poltronasCadeirantes = poltronasCadeirantes;
-    }
-
-    public int getQtdeAltofalante() {
-        return qtdeAltofalante;
-    }
-
-    public void setQtdeAltofalante(int qtdeAltofalante) {
-        this.qtdeAltofalante = qtdeAltofalante;
     }
 
     public int getFileiras() {

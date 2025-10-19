@@ -1,11 +1,12 @@
 // Lucas Fares Corrêa Auad Pereira
 
-public class Sala3D extends Sala{
-    private float taxaManutencao;
+public class Sala3D extends Sala implements Calc{
+    private float taxaManutencao = 10.00f;
     private String tecnologia;
 
-    public Sala3D() {
-        super();
+    public Sala3D(float tex_man, String tec) {
+        this.taxaManutencao = tex_man;
+        this.tecnologia = tec;
     }
 
     // Getters e Setters
@@ -30,14 +31,8 @@ public class Sala3D extends Sala{
         return "Sala 3D - ID: " + getId() + " - Tecnologia: " + tecnologia;
     }
 
-    //Sobrecarga
-    public float calcularCustoManutencao() {
-        return taxaManutencao * getCapacidade();
-    }
-
-    //Sobrecarga
-    public float calcularCustoManutencao(int meses) {
-        return calcularCustoManutencao() * meses;
+    public float calcularPreco(float precoBase){
+        return precoBase + taxaManutencao;
     }
      
 }

@@ -4,12 +4,15 @@ public class SalaIMAX extends Sala implements Calc{
     private boolean poltronaPremium;
     private float taxaAdicional = 32.50f;
 
-    public SalaIMAX() {
-        super();
+    //Sobrecarga
+    public SalaIMAX(boolean pol_pre, float tax_add) {
+        this.poltronaPremium = pol_pre;
+        this.taxaAdicional = tax_add;
     }
+    
 
     // Getters e Setters
-    public boolean isPoltronaPremium() {
+    public boolean getPoltronaPremium() {
         return poltronaPremium;
     }
 

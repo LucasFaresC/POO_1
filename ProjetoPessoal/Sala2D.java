@@ -3,7 +3,10 @@
 public class Sala2D extends Sala implements Calc{
     private boolean acessibilidadeSurdo;
     private boolean acessibilidadeCego;
+    
+    public Sala2D(){}// construtor default
 
+    // Sobrecarga
     public Sala2D(boolean acess_surdo, boolean acess_cego) {
         this.acessibilidadeSurdo = acess_surdo;
         this.acessibilidadeCego = acess_cego;
@@ -28,7 +31,7 @@ public class Sala2D extends Sala implements Calc{
 
     //Sobrescrita
     public String toString() {
-        return "Sala 2D - ID: " + getId() + " - Capacidade: " + getFileiras()*getPoltronas();
+        return "Sala 2D - ID: " + getId() + " - Capacidade: " + getFileiras()*getPoltronas() + " " + getInfoAcessibilidade(true);
     }
 
     //Sobrecarga

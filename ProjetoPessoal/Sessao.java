@@ -1,8 +1,10 @@
 // Lucas Fares Correa Auad Pereira
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Sessao {
+
     private int id;
     private Filme filme;
     private boolean cheio;
@@ -10,6 +12,7 @@ public class Sessao {
     private LocalDate data;
     private LocalTime hora;
 
+    public Sessao(){}// construtor default
 
     // Sobrecarga
     public Sessao(int i, Filme f, boolean c, LocalDate d, LocalTime h){
@@ -94,6 +97,7 @@ public class Sessao {
         }
         return false;
     }
+
 
     // Método privado para verificar se todas as poltronas estão ocupadas
     private void verificarSeEstaCheio() {

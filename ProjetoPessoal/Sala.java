@@ -1,20 +1,22 @@
+// Lucas Fares Correa Auad Pereira
 
-// Lucas Fares Corrêa Auad Pereira
+import java.util.ArrayList;
+import java.util.List;
+
 
 public abstract class Sala{
     private int id;
     private int poltronasCadeirantes;
     private int fileiras = 4;
     private int poltronas = 4;
-    private int quantidadeSessoes = 3;
-    private Sessao sessoes[] = new Sessao[quantidadeSessoes];
+    private int quantidadeSessoes = 4;
+    private List<Sessao> sessoes = new ArrayList<Sessao>();
     private int sessaoAtual = 0;
     private float precoBase = 14.50f;
 
     
-    public Sala(){// contrutor default
-
-    }
+    public Sala(){}// contrutor default
+        
 
     // Sobrecarga
     public Sala(int i, int pol_cade, int fil, int pol ,int qtd_sessoes, int ses_atual) {
@@ -24,7 +26,6 @@ public abstract class Sala{
         this.poltronas = pol;
         this.quantidadeSessoes = qtd_sessoes;
         this.sessaoAtual = ses_atual;
-        this.sessoes = new Sessao[quantidadeSessoes];
     }
 
     public void avancarSessao(){ 
@@ -69,12 +70,12 @@ public abstract class Sala{
         this.poltronas = poltronas;
     }
 
-    public Sessao[] getSessoes() {
+    public List<Sessao> getSessoes() {
         return sessoes;
     }
 
-    public void setSessoes(Sessao[] sessoes) {
-        this.sessoes = sessoes;
+    public void setSessoes(List<Sessao> s) {
+        this.sessoes = s;
     }
 
     public void setPrecoBase(float p){

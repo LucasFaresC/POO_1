@@ -4,6 +4,8 @@ public class Sala3D extends Sala implements Calc{
     private float taxaManutencao = 10.00f;
     private String tecnologia;
 
+    public Sala3D(){}// contructor default
+
     public Sala3D(float tex_man, String tec) {
         this.taxaManutencao = tex_man;
         this.tecnologia = tec;
@@ -28,11 +30,11 @@ public class Sala3D extends Sala implements Calc{
 
     //Sobrescrita
     public String toString() {
-        return "Sala 3D - ID: " + getId() + " - Tecnologia: " + tecnologia;
+        return "Sala 3D - ID: " + getId() + "\nTecnologia: " + tecnologia +"\nTaxa Adional: R$"+taxaManutencao;
     }
 
-    public float calcularPreco(float precoBase){
-        return precoBase + taxaManutencao;
+    public float calcularPreco(float preco){
+        return preco + taxaManutencao;
     }
      
 }

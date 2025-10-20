@@ -3,6 +3,7 @@
 public class SalaIMAX extends Sala implements Calc{
     private boolean poltronaPremium;
     private float taxaAdicional = 32.50f;
+    public SalaIMAX(){} // constructor default
 
     //Sobrecarga
     public SalaIMAX(boolean pol_pre, float tax_add) {
@@ -10,7 +11,6 @@ public class SalaIMAX extends Sala implements Calc{
         this.taxaAdicional = tax_add;
     }
     
-
     // Getters e Setters
     public boolean getPoltronaPremium() {
         return poltronaPremium;
@@ -30,12 +30,13 @@ public class SalaIMAX extends Sala implements Calc{
 
     //Sobrescrita
     public String toString() {
-        return "Sala IMAX - ID: " + getId() + " - Taxa Adicional: R$ " + taxaAdicional;
+        String info = poltronaPremium == true ? "\nCom Poltronas Premium instaladas" : "";
+        return "Sala IMAX - ID: " + getId() + " - Taxa Adicional: R$" + taxaAdicional + info;
     }
 
     //Sobrecarga
-    public float calcularPreco(float precoBase) {
-        return precoBase + taxaAdicional;
+    public float calcularPreco(float preco) {
+        return preco + taxaAdicional;
     }
 
 }

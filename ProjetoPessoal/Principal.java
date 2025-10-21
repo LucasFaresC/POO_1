@@ -1,20 +1,24 @@
 // Lucas Fares Corrêa Auad Pereira
+// RA: 2706652
 
+
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Principal{
-    
+    static List<Ingresso> seusIngressos = new ArrayList<Ingresso>();
     static List<Sala2D> salas2D = new ArrayList<Sala2D>();
     static List<Sala3D> salas3D = new ArrayList<Sala3D>();
     static List<SalaIMAX> salasImax = new ArrayList<SalaIMAX>();
     static List<Filme> filmes = new ArrayList<Filme>();
     static Leitura leitura = Leitura.geraLeitura();
 
-    // contadores para geracao de ids precerudal
+    // contadores para geracao de ids precedural
     static int contador_filmes = 0;
     static int contador_salas = 0;
     static int contador_ingresso = 0;
@@ -87,7 +91,7 @@ public class Principal{
                         }catch(NumberFormatException nfe){
                             System.out.print("\n**Digite apenas numeros inteiros**\n");
                         }catch(VarOutOfBoundsException voobe){
-                            System.out.println("\nErro: " + voobe.getMessage());
+                            System.out.print("\nErro: " + voobe.getMessage());
                         }
                     }
 
@@ -156,7 +160,7 @@ public class Principal{
         certeza = false;
         // cadastro de genero de FILME
         while(!certeza){
-            filme.setGenero(leitura.entDados("Insira o genero do Filme: "));
+            filme.setGenero(leitura.entDados("\nInsira o genero do Filme (ex: Ação, Drama, Comédia): ")); // Reflexividade
             try {
                 certeza = Integer.parseInt(leitura.entDados("\nID: "+filme.getId()+ " Genero: "+ filme.getGenero()+ "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
             } catch (NumberFormatException e) {
@@ -170,7 +174,7 @@ public class Principal{
                 filme.setDuracaoMin(Integer.parseInt(leitura.entDados("\nDuração em minutos: "))); //Reflexividade
                 break;
             }catch(NumberFormatException nfe) {
-                System.out.print("Insira apenas numeros inteiros.");
+                System.out.print("\nInsira apenas numeros inteiros.");
             }
         }
 
@@ -193,13 +197,13 @@ public class Principal{
         while(true){
             try {
                 
-                String perg = leitura.entDados("\nO filme é Dublado em PT-BR?\n(1) Sim ou (2) Não: ");
+                String perg = leitura.entDados("\nO filme é Dublado em PT-BR?\n(1) Sim ou (2) Não: "); // Reflexividade
                 boolean resp = Integer.parseInt(perg) == 1;
                 filme.setDublado(resp);
                 break;
 
             } catch(NumberFormatException nfe) {
-                System.out.print("Insira apenas numeros inteiros.");
+                System.out.print("\nInsira apenas numeros inteiros.");
             }
         }
         
@@ -338,14 +342,10 @@ public class Principal{
         return reg;
     }
 
-    public static void comprarIngresso(){
-        
-    }
-
     public static void menu(int codigo){
         switch (codigo) {
             case 0:
-                System.out.print("\n<<< CINEMA UTPFR >>> " +LocalDate.now() +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Gerenciar Salas\n4) - Cadastrar Sessao");
+                System.out.print("\n<<< CINEMA UTPFR >>> " +LocalTime.now() +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Gerenciar Salas\n4) - Cadastrar Sessao");
                 break;
                 
             case 2:
@@ -369,7 +369,7 @@ public class Principal{
         
         while(true){
             try {
-                int cadeirantes = Integer.parseInt(leitura.entDados("\nNumero de poltronas para cadeirantes: "));
+                int cadeirantes = Integer.parseInt(leitura.entDados("\nNumero de poltronas para cadeirantes: ")); // Reflexividade
                 sala.setPoltronasCadeirantes(cadeirantes);
                 break;
             } catch(NumberFormatException nfe) {
@@ -380,7 +380,7 @@ public class Principal{
         while(true){
             try { 
                 
-                sala.setAcessibilidadeSurdo(Integer.parseInt(leitura.entDados("\nPossui acessibilidade para surdos? (1) Sim (2) Nao: ")) == 1);
+                sala.setAcessibilidadeSurdo(Integer.parseInt(leitura.entDados("\nPossui acessibilidade para surdos? (1) Sim (2) Nao: ")) == 1); // Reflexividade
                 break;
 
             } catch(NumberFormatException nfe) {
@@ -390,7 +390,7 @@ public class Principal{
         
         while(true){
             try {
-                sala.setAcessibilidadeCego(Integer.parseInt(leitura.entDados("\nPossui acessibilidade para cegos? (1) Sim (2) Nao: ")) == 1);
+                sala.setAcessibilidadeCego(Integer.parseInt(leitura.entDados("\nPossui acessibilidade para cegos? (1) Sim (2) Nao: ")) == 1); // Reflexividade
                 break;
             } catch(NumberFormatException nfe) {
                 System.out.print("\nInsira 1 para Sim ou 2 para Nao.");
@@ -410,7 +410,7 @@ public class Principal{
         
         while(true){
             try {
-                int cadeirantes = Integer.parseInt(leitura.entDados("\nNumero de poltronas para cadeirantes: "));
+                int cadeirantes = Integer.parseInt(leitura.entDados("\nNumero de poltronas para cadeirantes: ")); // reflexividade
                 sala.setPoltronasCadeirantes(cadeirantes);
                 break;
             } catch(NumberFormatException nfe) {
@@ -423,7 +423,7 @@ public class Principal{
         while(!certeza){
             try {
                 
-                sala.setTecnologia(leitura.entDados("\nTecnologia 3D utlizada (ex: RealD, Dolby 3D): "));
+                sala.setTecnologia(leitura.entDados("\nTecnologia 3D utlizada (ex: RealD, Dolby 3D): ")); // reflexividade
                 certeza = Integer.parseInt(leitura.entDados("\nID: "+sala.getId()+ " Tecnologia: "+ sala.getTecnologia() + "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
             } catch (NumberFormatException e){
                 System.out.println("\nApenas Digite numeros inteiros");
@@ -434,7 +434,7 @@ public class Principal{
 
         while(!certeza){
             try {
-                sala.setTaxaManutencao(Float.parseFloat(leitura.entDados("\nTaxa de manutencao (ex: 10.00): ")));
+                sala.setTaxaManutencao(Float.parseFloat(leitura.entDados("\nTaxa de manutencao (ex: 10.00): "))); // reflexividade
                 certeza = Integer.parseInt(leitura.entDados("\nID: "+sala.getId()+ " Taxa adicional "+ sala.getTaxaManutencao() + "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
 
             } catch(NumberFormatException nfe) {
@@ -490,9 +490,9 @@ public class Principal{
 
     public static void imprimirTodasSalas() {
         imprimirSalas2D();
-        System.out.println("");
+        System.out.println("==============");
         imprimirSalas3D();
-        System.out.println("");
+        System.out.println("==============");
         imprimirSalasIMAX();
     }
 
@@ -532,18 +532,373 @@ public class Principal{
 
     public static void cadastrarSessao(){
         imprimirTodasSalas();
+        int id_sala;
         while(true){
-            int id_sala;
             try {
-                id_sala = Integer.parseInt(leitura.entDados(rotulo));
+                id_sala = Integer.parseInt(leitura.entDados("\nInsira o ID da sala que deseja cadastrar esta sessão:")); // Reflexividade
+                break;
             } catch (NumberFormatException e) {
+                System.out.print("\nDigite apenas valores inteiros");
             }
         }
 
-        Sessao sessao = new Sessao();
+        boolean id_de_sala_3d = false;
+        boolean id_de_sala_2d = false;
+        boolean id_de_sala_imax = false;
 
-        // Como eu confiro se a array ta cheio ou nao
+        for(Sala2D sala : salas2D){
+            if(id_sala == sala.getId()){
+                id_de_sala_2d = true;
+            }
+        }
 
+        for(Sala3D sala : salas3D){
+            if(id_sala == sala.getId()){
+                id_de_sala_3d = true;
+            }
+        }
+
+        for(SalaIMAX sala : salasImax){
+            if(id_sala == sala.getId()){
+                id_de_sala_imax = true;
+            }
+        }
+
+        if(id_de_sala_2d){
+            Sessao sessao = new Sessao();
+            sessao.setId(contador_sessao++);
+
+            while(true){
+                try{
+                    sessao.setData(leitura.entData("\nInsira a data de exibição do filme (aaaa-mm-dd): ")); // reflexividade
+                    sessao.setHora(leitura.entHorario("\nInsira o Horário de início da sessão (hh:mm): "));// reflexividade
+                    break;
+                }catch(DateTimeException dte){
+                    System.out.print("\nERRO Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)\nPara horario use hh:mm (ex: 15:30).");
+                }
+                
+            }
+            
+            inserirFilmeEmSessao(sessao);
+            System.out.print("\nSessão cadastrada!\nID: "+sessao.getId()+ "\nData e horário: "+sessao.getData() + " " +sessao.getHora()+"\n==========\n"+ sessao.getFilme());
+            salas2D.get(id_sala).getSessoes().add(sessao); //reflexividade
+
+        }else if(id_de_sala_3d){
+            Sessao sessao = new Sessao();
+            sessao.setId(contador_sessao++);
+
+            while(true){
+                try{
+                    sessao.setData(leitura.entData("\nInsira a data de exibição do filme (aaaa-mm-dd): ")); // reflexividade
+                    sessao.setHora(leitura.entHorario("\nInsira o Horário de início da sessão (hh:mm): "));// reflexividade
+                    break;
+                }catch(DateTimeException dte){
+                    System.out.print("\nERRO Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)\nPara horario use hh:mm (ex: 15:30).");
+                }
+                
+            }
+
+            inserirFilmeEmSessao(sessao);
+            salas3D.get(id_sala).getSessoes().add(sessao); //reflexividade
+            System.out.print("\nSessão cadastrada!\nID: "+sessao.getId()+ "\nData e horário: "+sessao.getData() + " " +sessao.getHora()+"\n==========\n"+ sessao.getFilme());
+            
+        }else if(id_de_sala_imax){
+            Sessao sessao = new Sessao();
+            sessao.setId(contador_sessao++);
+
+            while(true){
+                try{
+                    sessao.setData(leitura.entData("\nInsira a data de exibição do filme (aaaa-mm-dd): ")); // reflexividade
+                    sessao.setHora(leitura.entHorario("\nInsira o Horário de início da sessão (hh:mm): "));// reflexividade
+                    break;
+                }catch(DateTimeException dte){
+                    System.out.print("\nERRO Data inválida! Use o formato aaaa-mm-dd (ex: 2024-12-25)\nPara horario use hh:mm (ex: 15:30).");
+                }
+                
+            }
+
+            inserirFilmeEmSessao(sessao);
+            System.out.print("\nSessão cadastrada!\nID: "+sessao.getId()+ "\nData e horário: "+sessao.getData() + " " +sessao.getHora()+"\n==========\nINFO sobre o filme:"+ sessao.getFilme());
+            salasImax.get(id_sala).getSessoes().add(sessao); //reflexividade
+            
+
+        }else{
+            System.out.print("\nO numero digitado, não tem correspondentes. Retornando");
+            return;
+        }
+
+        //confeir data → conferir possiveis conflitos
+        //calcular tempo de final de sessao
+
+    }   
+
+    public static void inserirFilmeEmSessao(Sessao s){
+        impAllFilmes();
+        int id_filme;
+        while (true){
+            try {
+                id_filme = Integer.parseInt(leitura.entDados("\nInsira o ID do filme que gostaria agendar um sessão: ")); //reflexividade
+                if(idFilmeRegistado(id_filme)){
+                    s.setFilme(getFilmebyID(id_filme)); //reflexividade
+                    break;
+                }else{
+                    System.out.println("\nO id digitado não tem correspondente.");
+                    return;
+                }
+
+
+            }catch(NumberFormatException nfe) {
+                System.out.print("\nDigite apenas numeros inteiros");
+            }
+        }
+    }
+
+    public static void impAllSessoes(){
+        boolean sem_salas = true;
+
+        for(Sala2D s2d : salas2D){
+            if(!s2d.getSessoes().isEmpty() == false){ // reflexividade
+                sem_salas = false;
+                System.out.print(s2d);
+            }
+        }
+        System.out.print(sem_salas == false ? "==============": "");
+        
+        for(Sala3D s3d : salas3D){
+            if(!s3d.getSessoes().isEmpty() == false){ // reflexividade
+                sem_salas = false;
+                System.out.print(s3d);
+            }
+        }
+        System.out.print(sem_salas == false ? "==============": "");
+        
+        for(SalaIMAX simax : salasImax){ 
+            if(!simax.getSessoes().isEmpty() == false){ // reflexividade
+                System.out.print(simax);
+            }
+        }
+        
+        
+    }
+
+    public static void comprarIngresso(){
+    // Verifica se há sessões disponíveis
+        if (salas2D.isEmpty() && salas3D.isEmpty() && salasImax.isEmpty()) {
+            System.out.println("\nNão há salas cadastradas. Impossível vender ingressos.");
+            return;
+        }
+        
+        // Listar todas as sessões disponíveis
+        System.out.println("\n=== SESSÕES DISPONÍVEIS ===");
+        impAllSessoes();
+        
+        // Selecionar sessão
+        int idSessao;
+        int idSala = 0;
+        Sessao sessaoEscolhida = new Sessao();
+        boolean id_de_sala_3d = false;
+        boolean id_de_sala_2d = false;
+        boolean id_de_sala_imax = false;
+        float precoFinal = 0.00f;
+        while (true) {
+            try {
+                idSessao = Integer.parseInt(leitura.entDados("\nDigite o ID da sessão desejada: "));// reflexividade
+                
+                // Buscar sessão em todas as salas
+                for (Sala2D sala : salas2D) {
+                    for (Sessao sessao : sala.getSessoes()) {
+                        if (sessao.getId() == idSessao) {
+                            id_de_sala_2d = true;
+                            idSala = sala.getId();
+                            break;
+                        }
+                    }
+                }
+                
+                for (Sala3D sala : salas3D) {
+                    for (Sessao sessao : sala.getSessoes()) {
+                        if (sessao.getId() == idSessao) {
+                            id_de_sala_3d = true;
+                            idSala = sala.getId();
+                            break;
+                        }
+                    }
+                }
+                
+                for (SalaIMAX sala : salasImax) {
+                    for (Sessao sessao : sala.getSessoes()) {
+                        if (sessao.getId() == idSessao) {
+                            id_de_sala_imax = true;
+                            idSala = sala.getId();
+                            break;
+                        }
+                    }
+                }
+                
+                if (!id_de_sala_2d && !id_de_sala_3d && !id_de_sala_imax) {
+                    System.out.print("\nSessão não encontrada! Tente novamente.");
+                    return;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("\nDigite um número inteiro válido.");
+            }
+        }
+        
+        // Mostrar informações da sessão escolhida
+        System.out.print("\n=== SESSÃO SELECIONADA ===");
+        System.out.print("\nFilme: " + sessaoEscolhida.getFilme().getNome());
+        System.out.print("\nData: " + sessaoEscolhida.getData());
+        System.out.print("\nHorário: " + sessaoEscolhida.getHora());
+        System.out.print("\nSala: " + getSalaById(idSala));
+        
+        // Mostrar mapa de poltronas
+        exibirMapaPoltronas(sessaoEscolhida);
+        
+        Ingresso ingresso = new Ingresso();
+        // Selecionar poltrona
+        while (true) {
+            try {
+                ingresso.setFileira(Integer.parseInt(leitura.entDados("\nDigite a fileira desejada (1-4): "))); // Reflexividade
+                ingresso.setPoltrona(Integer.parseInt(leitura.entDados("\nDigite a poltrona desejada (1-4): "))); // Reflexividade
+            
+                
+                if (ingresso.getFileira() < 1 || ingresso.getFileira() > 4 || ingresso.getPoltrona() < 1 || ingresso.getPoltrona() > 4) {
+                    System.out.print("\nFileira e poltrona devem estar entre 1 e 4!");
+                    continue;
+                }
+                
+                // Verificar se poltrona está disponível
+                if (!sessaoEscolhida.poltronaLivre(ingresso.getFileira() - 1, ingresso.getPoltrona() - 1)) {// Reflexividade
+                    System.out.print("\nPoltrona já ocupada! Escolha outra.");
+                    continue;
+                }
+                
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("\nDigite números inteiros válidos.");
+            }
+        }
+        
+        // Verificar se é meia-entrada
+        while (true) {
+            try {
+                ingresso.setMeia(Integer.parseInt(leitura.entDados("\nÉ meia-entrada? (1) Sim (2) Não: ")) == 1); // reflexividade
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("\nDigite um número inteiro válido.");
+            }
+        }
+        
+        // Calcular preço baseado no tipo de sala
+        if(id_de_sala_2d){
+            precoFinal = calcularPrecoIngresso("2D", getSalaById(idSala), ingresso.isMeia());
+            
+        }else if(id_de_sala_3d){
+            precoFinal = calcularPrecoIngresso("3D", getSalaById(idSala), ingresso.isMeia());
+            
+        }else if(id_de_sala_imax){
+            precoFinal = calcularPrecoIngresso("IMAX", getSalaById(idSala), ingresso.isMeia());
+            
+        }
+        
+        ingresso.setId(contador_ingresso++);
+
+        // Criar ingresso
+        ingresso.setDataHoraCompra(LocalDateTime.now());
+        
+        // Marcar poltrona como ocupada
+        sessaoEscolhida.ocuparPoltrona(ingresso.getFileira() - 1, ingresso.getPoltrona() - 1);
+        
+        // Adicionar à lista de ingressos vendidos
+        seusIngressos.add(ingresso);
+        
+        // Mostrar resumo da compra
+        System.out.print("\n=== INGRESSO COMPRADO COM SUCESSO! ===");
+        System.out.print("\nID do Ingresso: " + ingresso.getId());
+        System.out.print("\nFilme: " + sessaoEscolhida.getFilme().getNome());// Reflexividade
+        System.out.print("\nData: " + sessaoEscolhida.getData() + " " + sessaoEscolhida.getHora());
+        System.out.print("\nPoltrona: Fileira " + ingresso.getFileira() + ", Assento " + ingresso.getPoltrona());
+        System.out.print("\nTipo: " + (ingresso.isMeia() ? "Meia-entrada" : "Inteira"));
+        System.out.print("\nPreço: R$ " + precoFinal);
+        System.out.print("\n=====================================");
+    }
+
+    // Método auxiliar para calcular preço baseado no tipo de sala
+    public static float calcularPrecoIngresso(String tipoSala, Object sala, boolean meia) {
+        float precoBase = 14.50f; // Preço base definido na classe Sala
+        
+        switch (tipoSala) {
+            case "2D":
+                if (sala instanceof Sala2D) {
+                    precoBase = ((Sala2D) sala).calcularPreco(precoBase);
+                }
+                break;
+            case "3D":
+                if (sala instanceof Sala3D) {
+                    precoBase = ((Sala3D) sala).calcularPreco(precoBase);
+                }
+                break;
+                case "IMAX":
+                if (sala instanceof SalaIMAX) {
+                    
+                    precoBase = ((SalaIMAX) sala).calcularPreco(precoBase);
+                }
+                break;
+        }
+        
+        return meia ? precoBase / 2 : precoBase;
+    }
+
+    // Método para exibir mapa de poltronas
+    public static void exibirMapaPoltronas(Sessao sessao) {
+        System.out.print("\n=== MAPA DE POLTRONAS ===");
+        System.out.print("\nLegenda: [ ] Disponível  [X] Ocupada");
+        System.out.print("   ");
+        for (int i = 1; i <= 4; i++) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.println();
+        
+        for (int fileira = 0; fileira < 4; fileira++) {
+            System.out.print((char)('A' + fileira) + "  ");
+            for (int poltrona = 0; poltrona < 4; poltrona++) {
+                if (sessao.poltronaLivre(fileira, poltrona)) {
+                    System.out.print("[ ]");
+                } else {
+                    System.out.print("[X]");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static Sala getSalaById(int id) { // oi professor, tive que fazer uma gambiarra, mas funciona!
+        // Procurar nas salas 2D
+        for (Sala2D sala : salas2D) {
+            if (sala.getId() == id) {
+                // Polimorfismo: Sala2D é uma Sala
+                return sala; 
+            }
+        }
+        
+        // Procurar nas salas 3D
+        for (Sala3D sala : salas3D) {
+            if (sala.getId() == id) {
+                // Polimorfismo: Sala3D é uma Sala
+                return sala; 
+            }
+        }
+        
+        // Procurar nas salas IMAX
+        for (SalaIMAX sala : salasImax) {
+            if (sala.getId() == id) {
+                // Polimorfismo: SalaIMAX é uma Sala
+                return sala; 
+            }
+        }
+        
+        return null; // Não encontrada
     }
 
 }

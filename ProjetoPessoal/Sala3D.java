@@ -1,4 +1,5 @@
 // Lucas Fares Corrêa Auad Pereira
+// RA: 2706652
 
 public class Sala3D extends Sala implements Calc{
     private float taxaManutencao = 10.00f;
@@ -6,6 +7,7 @@ public class Sala3D extends Sala implements Calc{
 
     public Sala3D(){}// contructor default
 
+    // Sobrecarga
     public Sala3D(float tex_man, String tec) {
         this.taxaManutencao = tex_man;
         this.tecnologia = tec;

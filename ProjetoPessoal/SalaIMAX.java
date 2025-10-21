@@ -1,4 +1,5 @@
 // Lucas Fares Corrêa Auad Pereira
+// RA: 2706652
 
 public class SalaIMAX extends Sala implements Calc{
     private boolean poltronaPremium;

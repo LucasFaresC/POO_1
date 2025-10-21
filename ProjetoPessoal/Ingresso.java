@@ -1,6 +1,7 @@
 // Lucas Fares Correa Auad Pereira
-import java.time.LocalDateTime;
+// RA: 2706652
 
+import java.time.LocalDateTime;
 
 public class Ingresso {
     private int id;

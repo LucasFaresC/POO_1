@@ -74,7 +74,7 @@ public class Sessao {
 
     //Sobrescrita
     public String toString() {
-        return "Sessao ID: " + id + " - " + filme.getNome() + " - " + data + " " + hora;
+        return "\nSessao ID: " + id + " - " + filme.getNome() + " - " + data + " " + hora;
     }
 
 

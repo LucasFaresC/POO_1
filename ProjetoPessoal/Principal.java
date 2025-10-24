@@ -1,11 +1,11 @@
 // Lucas Fares Corrêa Auad Pereira
 // RA: 2706652
 
-
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,9 @@ public class Principal{
     static int contador_sessao = 0;
     static int var;
     public static void main(String args[]) {
+        if(args.length>0){
+            inicializarDadosTeste();
+        }
         
         while(true){
             menu(0);
@@ -112,7 +115,247 @@ public class Principal{
         }
     }
 
-    
+    public static void inicializarDadosTeste() {
+        
+        Filme filme1 = new Filme();
+        filme1.setId(contador_filmes++);
+        filme1.setNome("Carros 2");
+        filme1.setGenero("Animação");
+        filme1.setDiretor("John Lasseter");
+        filme1.setDuracaoMin(106);
+        filme1.setSinopse("Relâmpago McQueen e seu amigo Mate viajam pelo mundo participando do Grand Prix. Enquanto McQueen compete, Mate se envolve em uma perigosa missão de espionagem que coloca ambos em risco.");
+        filme1.setLegendado(true);
+        filme1.setDublado(true);
+        filme1.setEstreia(LocalDate.now().minusDays(20)); //reflexividade
+        filme1.setFimExibicoes(LocalDate.now().plusDays(40)); //reflexividade
+        filmes.add(filme1);
+
+        // Filme 2: Ne Zha 2  
+        Filme filme2 = new Filme();
+        filme2.setId(contador_filmes++);
+        filme2.setNome("Ne Zha 2");
+        filme2.setGenero("Animação");
+        filme2.setDiretor("Yu Yang");
+        filme2.setDuracaoMin(110);
+        filme2.setSinopse("O jovem deus Ne Zha enfrenta uma nova ameaça sobrenatural enquanto luta para proteger o mundo mortal e celestial de forças demoníacas que buscam vingança.");
+        filme2.setLegendado(true);
+        filme2.setDublado(true);
+        filme2.setEstreia(LocalDate.now().minusDays(15)); //reflexividade
+        filme2.setFimExibicoes(LocalDate.now().plusDays(45)); //reflexividade
+        filmes.add(filme2);
+
+        // Filme 3: Show de Truman
+        Filme filme3 = new Filme();
+        filme3.setId(contador_filmes++);
+        filme3.setNome("O Show de Truman");
+        filme3.setGenero("Drama");
+        filme3.setDiretor("Peter Weir");
+        filme3.setDuracaoMin(103);
+        filme3.setSinopse("Truman Burbank descobre que sua vida perfeita é na verdade um reality show televisionado 24 horas por dia, e deve escolher entre a segurança de sua prisão dourada ou a liberdade do mundo real.");
+        filme3.setLegendado(false);
+        filme3.setDublado(true);
+        filme3.setEstreia(LocalDate.now().minusDays(10)); //reflexividade
+        filme3.setFimExibicoes(LocalDate.now().plusDays(35)); //reflexividade
+        filmes.add(filme3);
+
+        // Filme 4: Superman (James Gunn - 2025)
+        Filme filme4 = new Filme();
+        filme4.setId(contador_filmes++);
+        filme4.setNome("Superman");
+        filme4.setGenero("Ação");
+        filme4.setDiretor("James Gunn");
+        filme4.setDuracaoMin(142);
+        filme4.setSinopse("Clark Kent embarca em uma jornada para reconciliar sua herança kryptoniana com sua vida humana em Smallville. Ele deve encontrar o equilíbrio entre seu destino como super-herói e o desejo de viver uma vida normal com as pessoas que ama.");
+        filme4.setLegendado(true);
+        filme4.setDublado(true);
+        filme4.setEstreia(LocalDate.now().minusDays(8)); //reflexividade
+        filme4.setFimExibicoes(LocalDate.now().plusDays(37)); //reflexividade
+        filmes.add(filme4);
+
+        Filme filme5 = new Filme();
+        filme5.setId(contador_filmes++);
+        filme5.setNome("Até que a Sorte nos Separe 2");
+        filme5.setGenero("Comédia");
+        filme5.setDiretor("Roberto Santucci");
+        filme5.setDuracaoMin(101);
+        filme5.setSinopse("Janeiro continua metendo os pés pelas mãos enquanto tenta administrar seu dinheiro inesperado, mas descobre que riqueza traz tantos problemas quanto pobreza.");
+        filme5.setLegendado(false);
+        filme5.setDublado(true);
+        filme5.setEstreia(LocalDate.now().minusDays(12)); //reflexividade
+        filme5.setFimExibicoes(LocalDate.now().plusDays(33));//reflexividade
+        filmes.add(filme5);
+
+        Filme filme6 = new Filme();
+        filme6.setId(contador_filmes++);
+        filme6.setNome("Parasita");
+        filme6.setGenero("Drama");
+        filme6.setDiretor("Bong Joon-ho");
+        filme6.setDuracaoMin(132);
+        filme6.setSinopse("Uma família pobre elabora um plano inteligente para se infiltrar na casa de uma família rica\n mas segredos obscuros surgem quando os mundos colidem de forma violenta.");
+        filme6.setLegendado(true);
+        filme6.setDublado(true);
+        filme6.setEstreia(LocalDate.now().minusDays(5));//reflexividade
+        filme6.setFimExibicoes(LocalDate.now().plusDays(50)); //reflexividade
+        filmes.add(filme6);
+
+        Filme filme7 = new Filme();
+        filme7.setId(contador_filmes++);
+        filme7.setNome("Homem com H");
+        filme7.setGenero("Documentário");
+        filme7.setDiretor("João Jardim");
+        filme7.setDuracaoMin(92);
+        filme7.setSinopse("Documentário íntimo que acompanha a vida e carreira de Ney Matogrosso\n explorando sua trajetória artística, quebra de tabus e a construção de uma identidade única na música brasileira.\nO filme revela o homem por trás do personagem.");
+        filme7.setLegendado(false);
+        filme7.setDublado(true); 
+        filme7.setEstreia(LocalDate.now().minusDays(3)); //relexividade
+        filme7.setFimExibicoes(LocalDate.now().plusDays(42)); //reflexividade
+        filmes.add(filme7);
+
+        Filme filme8 = new Filme();
+        filme8.setId(contador_filmes++);
+        filme8.setNome("Ainda Estou Aqui");
+        filme8.setGenero("Drama Biográfico");
+        filme8.setDiretor("Walter Salles");
+        filme8.setDuracaoMin(135); // DURAÇÃO CORRETA CONFIRMADA
+        filme8.setSinopse("Durante a ditadura militar no Brasil, Eunice Paiva é forçada a se reinventar e traçar um novo destino para si e seus filhos após o desaparecimento forçado de seu marido, o ex-deputado Rubens Paiva. Baseado na autobiografia de Marcelo Rubens Paiva.");
+        filme8.setLegendado(true);
+        filme8.setDublado(true);
+        filme8.setEstreia(LocalDate.now().minusDays(7));
+        filme8.setFimExibicoes(LocalDate.now().plusDays(38));
+        filmes.add(filme8);
+
+        // INICIALIZAR SALAS
+        // 3 Salas 2D
+        for (int i = 0; i < 3; i++) {
+            Sala2D sala = new Sala2D();
+            sala.setId(contador_salas++);
+            sala.setPoltronasCadeirantes(4);
+            sala.setAcessibilidadeSurdo(i % 2 == 0);
+            sala.setAcessibilidadeCego(i == 2);
+            salas2D.add(sala);
+        }
+
+        // 3 Salas 3D
+        for (int i = 0; i < 3; i++) {
+            Sala3D sala = new Sala3D();
+            sala.setId(contador_salas++);
+            sala.setPoltronasCadeirantes(4);
+            sala.setTecnologia(i == 0 ? "RealD" : (i == 1 ? "Dolby 3D" : "IMAX 3D"));
+            sala.setTaxaManutencao(i == 2 ? 12.00f : 8.00f);
+            salas3D.add(sala);
+        }
+
+        // 3 Salas IMAX
+        for (int i = 0; i < 3; i++) {
+            SalaIMAX sala = new SalaIMAX();
+            sala.setId(contador_salas++);
+            sala.setPoltronasCadeirantes(6);
+            sala.setPoltronaPremium(true);
+            sala.setTaxaAdicional(30.00f);
+            salasImax.add(sala);
+        }
+
+        // CRIAR SESSÕES COM POLTRONAS OCUPADAS
+        LocalDate hoje = LocalDate.now();
+        int sessaoIdCounter = 0;
+
+        // Criar múltiplas sessões para cada filme
+        for (int dia = 0; dia < 5; dia++) {
+            LocalDate dataSessao = hoje.plusDays(dia);
+
+            LocalTime horarios []= {
+                LocalTime.of(14, 0), LocalTime.of(16, 30), 
+                LocalTime.of(19, 0), LocalTime.of(21, 30)
+            };
+
+            for (int horarioIndex = 0; horarioIndex < horarios.length; horarioIndex++) {
+                LocalTime horario = horarios[horarioIndex];
+                
+                // Distribuir filmes entre as sessões
+                int filmeIndex = (dia * 4 + horarioIndex) % filmes.size();
+                Filme filmeAtual = filmes.get(filmeIndex);
+                
+                // Criar sessões em diferentes tipos de sala
+                if (dia % 3 == 0) {
+                    // Sala 2D
+                    Sala2D sala2D = salas2D.get(dia % salas2D.size());
+                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario, sala2D, sessaoIdCounter++);
+                }
+                
+                if (dia % 3 == 1 || horarioIndex >= 2) {
+                    Sala3D sala3D = salas3D.get((dia + horarioIndex) % salas3D.size());
+                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario.plusMinutes(10), sala3D, sessaoIdCounter++);
+                }
+                
+                if (horarioIndex >= 2) {
+                    SalaIMAX salaIMAX = salasImax.get((dia + horarioIndex) % salasImax.size());
+                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario.plusMinutes(20), salaIMAX, sessaoIdCounter++);
+                }
+            }
+        }
+
+        contador_sessao = sessaoIdCounter;
+        
+    }
+
+    // Criadora de sessoes ja ocupadas
+    private static void criarSessaoComOcupacao(Filme filme, LocalDate data, LocalTime hora, Object sala, int idSessao) {
+        Sessao sessao = new Sessao();
+        sessao.setId(idSessao);
+        sessao.setFilme(filme);
+        sessao.setData(data);
+        sessao.setHora(hora);
+        
+        // Inicializar matriz de poltronas 4x4
+        boolean poltronasOcupadas[][] = new boolean[4][4];
+        int poltronasOcupadasCount = 0;
+        
+        // gerador chique de numeros aleatorios
+        java.util.Random random = new java.util.Random(idSessao + filme.getId());
+        
+        for (int fileira = 0; fileira < 4; fileira++) {
+            for (int poltrona = 0; poltrona < 4; poltrona++) {
+                // Chance de 35% de estar ocupada
+                if (random.nextDouble() < 0.35) {
+                    poltronasOcupadas[fileira][poltrona] = true;
+                    poltronasOcupadasCount++;
+
+                    Ingresso ingresso = new Ingresso();
+                    ingresso.setId(contador_ingresso++);
+                    ingresso.setSessao(sessao);
+                    ingresso.setFileira(fileira+1);
+                    ingresso.setPoltrona(poltrona+1);
+
+
+                    // fazendo aquela gambiarra denovo
+                    String tipo = "";
+                    if(sala instanceof Sala2D){
+                        tipo = "2D";
+                    }else if(sala instanceof Sala3D){
+                        tipo = "3D";
+                    }else if(sala instanceof SalaIMAX){
+                        tipo = "IMAX";
+                    }
+                    ingresso.setPrecoCompra(calcularPrecoIngresso(tipo, sala, random.nextBoolean()));//reflexividade
+                    ingresso.setDataHoraCompra(LocalDateTime.now().minusHours(random.nextInt(72)));
+                    seusIngressos.add(ingresso);
+                }
+            }
+        }
+        
+        sessao.setPoltronasOcupadas(poltronasOcupadas);
+        sessao.setCheio(poltronasOcupadasCount == 16);
+        
+        if(sala instanceof Sala2D) {
+            ((Sala2D)sala).getSessoes().add(sessao);
+        } else if(sala instanceof Sala3D) {
+            ((Sala3D)sala).getSessoes().add(sessao);
+        } else if(sala instanceof SalaIMAX) {
+            ((SalaIMAX)sala).getSessoes().add(sessao);
+        }
+        
+    }
+        
     public static void cadastraFilme(){
         Filme filme = new Filme();
         filme.setId(contador_filmes);
@@ -310,10 +553,12 @@ public class Principal{
         while(true){
             try{
                 alvo = Integer.parseInt(leitura.entDados("\nDigite o ID, do filme que deseja consultar\n>>> "));// reflexividade
+                int cont = 0;
                 for(Filme f: filmes){
+                    cont++;
                     if(alvo == f.getId()){
                         break;
-                    }else{
+                    }else if(cont == filmes.size()){ // procuramos e não achamos
                         System.out.print("\nSeu ID digitado, não tem correspondentes. ");
                         return;
                     }
@@ -343,9 +588,10 @@ public class Principal{
     }
 
     public static void menu(int codigo){
+
         switch (codigo) {
             case 0:
-                System.out.print("\n<<< CINEMA UTPFR >>> " +LocalTime.now() +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Gerenciar Salas\n4) - Cadastrar Sessao");
+                System.out.print("\n<<< CINEMA UTPFR >>> " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd | HH:mm")) +"\nSeja bem-vindo(a)\n0) - Sair do aplicativo\n1) - Comprar ingresso\n2) - Gerenciar Filme\n3) - Gerenciar Salas\n4) - Cadastrar Sessao");
                 break;
                 
             case 2:
@@ -654,27 +900,45 @@ public class Principal{
     }
 
     public static void impAllSessoes(){
-        boolean sem_salas = true;
-
+        boolean sem_salas = false;
+        int contador_regressivo = salas2D.size();
         for(Sala2D s2d : salas2D){
-            if(!s2d.getSessoes().isEmpty() == false){ // reflexividade
-                sem_salas = false;
-                System.out.print(s2d);
+            contador_regressivo--;
+            if(s2d.getSessoes().isEmpty()){ // reflexividade
+                sem_salas = true;
+                break;
+            }else if(contador_regressivo == 0){
+                break;
             }
+            for(Sessao s: s2d.getSessoes()){
+                System.out.print(s);
+            }
+            
         }
         System.out.print(sem_salas == false ? "==============": "");
         
+        contador_regressivo = salas3D.size();
         for(Sala3D s3d : salas3D){
-            if(!s3d.getSessoes().isEmpty() == false){ // reflexividade
-                sem_salas = false;
-                System.out.print(s3d);
+            contador_regressivo--;
+            if(s3d.getSessoes().isEmpty()){ // reflexividade
+                sem_salas = true;
+                break;
+            }else if(contador_regressivo == 0){
+                break;
+            }
+            for(Sessao s: s3d.getSessoes()){
+                System.out.print(s);
             }
         }
         System.out.print(sem_salas == false ? "==============": "");
         
+        contador_regressivo = salas3D.size();
         for(SalaIMAX simax : salasImax){ 
-            if(!simax.getSessoes().isEmpty() == false){ // reflexividade
-                System.out.print(simax);
+            if(simax.getSessoes().isEmpty() || contador_regressivo == 0){ // reflexividade
+                break;
+            }
+            for(Sessao s: simax.getSessoes()){
+                System.out.print(s);
             }
         }
         
@@ -824,7 +1088,6 @@ public class Principal{
         System.out.print("\n=====================================");
     }
 
-    // Método auxiliar para calcular preço baseado no tipo de sala
     public static float calcularPrecoIngresso(String tipoSala, Object sala, boolean meia) {
         float precoBase = 14.50f; // Preço base definido na classe Sala
         
@@ -839,9 +1102,8 @@ public class Principal{
                     precoBase = ((Sala3D) sala).calcularPreco(precoBase);
                 }
                 break;
-                case "IMAX":
+            case "IMAX":
                 if (sala instanceof SalaIMAX) {
-                    
                     precoBase = ((SalaIMAX) sala).calcularPreco(precoBase);
                 }
                 break;
@@ -850,7 +1112,6 @@ public class Principal{
         return meia ? precoBase / 2 : precoBase;
     }
 
-    // Método para exibir mapa de poltronas
     public static void exibirMapaPoltronas(Sessao sessao) {
         System.out.print("\n=== MAPA DE POLTRONAS ===");
         System.out.print("\nLegenda: [ ] Disponível  [X] Ocupada");
@@ -874,10 +1135,13 @@ public class Principal{
     }
 
     public static Sala getSalaById(int id) { // oi professor, tive que fazer uma gambiarra, mas funciona!
+        
+        boolean tem_sala = false;
         // Procurar nas salas 2D
         for (Sala2D sala : salas2D) {
             if (sala.getId() == id) {
                 // Polimorfismo: Sala2D é uma Sala
+                tem_sala = true;
                 return sala; 
             }
         }
@@ -886,6 +1150,7 @@ public class Principal{
         for (Sala3D sala : salas3D) {
             if (sala.getId() == id) {
                 // Polimorfismo: Sala3D é uma Sala
+                tem_sala = true;
                 return sala; 
             }
         }
@@ -894,10 +1159,15 @@ public class Principal{
         for (SalaIMAX sala : salasImax) {
             if (sala.getId() == id) {
                 // Polimorfismo: SalaIMAX é uma Sala
+                tem_sala = true;
                 return sala; 
             }
         }
         
+        if (!tem_sala){
+            System.out.print("Não há nenhuma sala com este ID. ");
+        }
+
         return null; // Não encontrada
     }
 

@@ -2,11 +2,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener; //Interface
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.*;
 
 
 public class Janela1 implements ActionListener{
@@ -28,9 +24,11 @@ public class Janela1 implements ActionListener{
 	
 	public static void criaJan(){
 		
-		//jan1.setDefaultCloseOperation(jan1.EXIT_ON_CLOSE);
-		jan1.setDefaultCloseOperation(jan1.DISPOSE_ON_CLOSE);
-		
+		jan1.setDefaultCloseOperation(jan1.EXIT_ON_CLOSE);
+		//jan1.setDefaultCloseOperation(jan1.DISPOSE_ON_CLOSE);
+		//jan1.setDefaultCloseOperation(jan1.HIDE_ON_CLOSE);
+		//jan1.setDefaultCloseOperation(jan1.DO_NOTHING_ON_CLOSE);
+
 		int larg = 500, alt = 300;
 		jan1.setSize(larg, alt);
 		
@@ -81,7 +79,19 @@ public class Janela1 implements ActionListener{
 	}
 	
 	public void somar(){
-		int a = 10, b = 6;
+		int a = 0, b = 0;
+		try{
+			a = Integer.parseInt(cxCpf.getText());
+			b = Integer.parseInt(cxCpf.getText());
+		}catch(NumberFormatException nfe){
+			JOptionPane.showMessageDialog(
+				null,
+				"O Valor deve ser um inteiro",
+				"Valor errado",
+				JOptionPane.ERROR_MESSAGE
+			);
+
+		}
 		int c = a+b;
 		cxCpf.setText(Integer.toString(c));
 	}

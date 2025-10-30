@@ -24,11 +24,10 @@ public class Principal{
     static int contador_ingresso = 0;
     static int contador_sessao = 0;
     static int var;
-    public static void main(String args[]) {
-        if(args.length>0){
-            inicializarDadosTeste();
-        }
+    public static void main(String args[]) {   
         
+        inicializarDadosTeste();
+
         while(true){
             menu(0);
             while(true){
@@ -355,7 +354,7 @@ public class Principal{
         }
         
     }
-        
+
     public static void cadastraFilme(){
         Filme filme = new Filme();
         filme.setId(contador_filmes);
@@ -585,6 +584,13 @@ public class Principal{
         }
 
         return reg;
+    }
+
+    public static void menu(int codigo, Integer codig_secundario){
+        if(codig_secundario == null){
+            menu(codigo);
+        }// é sabio fazer mais menus ?
+
     }
 
     public static void menu(int codigo){
@@ -964,6 +970,7 @@ public class Principal{
         boolean id_de_sala_2d = false;
         boolean id_de_sala_imax = false;
         float precoFinal = 0.00f;
+
         while (true) {
             try {
                 idSessao = Integer.parseInt(leitura.entDados("\nDigite o ID da sessão desejada: "));// reflexividade
@@ -1003,12 +1010,17 @@ public class Principal{
                     System.out.print("\nSessão não encontrada! Tente novamente.");
                     return;
                 }
+
+                
+               sessaoEscolhida = getSessaoById(idSessao);
+
                 break;
             } catch (NumberFormatException e) {
                 System.out.print("\nDigite um número inteiro válido.");
             }
         }
         
+
         // Mostrar informações da sessão escolhida
         System.out.print("\n=== SESSÃO SELECIONADA ===");
         System.out.print("\nFilme: " + sessaoEscolhida.getFilme().getNome());
@@ -1085,7 +1097,40 @@ public class Principal{
         System.out.print("\nPoltrona: Fileira " + ingresso.getFileira() + ", Assento " + ingresso.getPoltrona());
         System.out.print("\nTipo: " + (ingresso.isMeia() ? "Meia-entrada" : "Inteira"));
         System.out.print("\nPreço: R$ " + precoFinal);
-        System.out.print("\n=====================================");
+        System.out.print("\n=====================================\n");
+    }
+
+    public static Sessao getSessaoById(int alvo){
+
+        Sessao s = new Sessao();
+        
+        for (Sala2D sala : salas2D) {
+            for (Sessao sessao : sala.getSessoes()) {
+                if (sessao.getId() == alvo) {
+                    s = sessao;
+                    
+                }
+            }
+        }
+                
+        for (Sala3D sala : salas3D) {
+            for (Sessao sessao : sala.getSessoes()) {
+                if (sessao.getId() == alvo) {
+                    s = sessao;
+                }
+            }
+        }
+        
+        for (SalaIMAX sala : salasImax) {
+            for (Sessao sessao : sala.getSessoes()) {
+                if (sessao.getId() == alvo) {
+                    s = sessao;
+                }
+            }
+        }
+
+        return s;
+
     }
 
     public static float calcularPrecoIngresso(String tipoSala, Object sala, boolean meia) {
@@ -1114,8 +1159,8 @@ public class Principal{
 
     public static void exibirMapaPoltronas(Sessao sessao) {
         System.out.print("\n=== MAPA DE POLTRONAS ===");
-        System.out.print("\nLegenda: [ ] Disponível  [X] Ocupada");
-        System.out.print("   ");
+        System.out.print("\nLegenda: [ ] Disponível  [X] Ocupada\n");
+        System.err.print("   ");
         for (int i = 1; i <= 4; i++) {
             System.out.print(" " + i + " ");
         }
@@ -1141,7 +1186,6 @@ public class Principal{
         for (Sala2D sala : salas2D) {
             if (sala.getId() == id) {
                 // Polimorfismo: Sala2D é uma Sala
-                tem_sala = true;
                 return sala; 
             }
         }
@@ -1150,7 +1194,6 @@ public class Principal{
         for (Sala3D sala : salas3D) {
             if (sala.getId() == id) {
                 // Polimorfismo: Sala3D é uma Sala
-                tem_sala = true;
                 return sala; 
             }
         }
@@ -1159,7 +1202,6 @@ public class Principal{
         for (SalaIMAX sala : salasImax) {
             if (sala.getId() == id) {
                 // Polimorfismo: SalaIMAX é uma Sala
-                tem_sala = true;
                 return sala; 
             }
         }

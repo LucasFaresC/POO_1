@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Principal{
     static List<Ingresso> seusIngressos = new ArrayList<Ingresso>();
@@ -26,7 +27,7 @@ public class Principal{
     static int var;
     public static void main(String args[]) {   
         
-        inicializarDadosTeste();
+        startInicialData(); // carregar algumas sessões 
 
         while(true){
             menu(0);
@@ -114,7 +115,7 @@ public class Principal{
         }
     }
 
-    public static void inicializarDadosTeste() {
+    public static void startInicialData() {
         
         Filme filme1 = new Filme();
         filme1.setId(contador_filmes++);
@@ -125,8 +126,8 @@ public class Principal{
         filme1.setSinopse("Relâmpago McQueen e seu amigo Mate viajam pelo mundo participando do Grand Prix. Enquanto McQueen compete, Mate se envolve em uma perigosa missão de espionagem que coloca ambos em risco.");
         filme1.setLegendado(true);
         filme1.setDublado(true);
-        filme1.setEstreia(LocalDate.now().minusDays(20)); //reflexividade
-        filme1.setFimExibicoes(LocalDate.now().plusDays(40)); //reflexividade
+        filme1.setEstreia(LocalDate.now().minusDays(20)); 
+        filme1.setFimExibicoes(LocalDate.now().plusDays(40)); 
         filmes.add(filme1);
 
         // Filme 2: Ne Zha 2  
@@ -139,8 +140,8 @@ public class Principal{
         filme2.setSinopse("O jovem deus Ne Zha enfrenta uma nova ameaça sobrenatural enquanto luta para proteger o mundo mortal e celestial de forças demoníacas que buscam vingança.");
         filme2.setLegendado(true);
         filme2.setDublado(true);
-        filme2.setEstreia(LocalDate.now().minusDays(15)); //reflexividade
-        filme2.setFimExibicoes(LocalDate.now().plusDays(45)); //reflexividade
+        filme2.setEstreia(LocalDate.now().minusDays(15)); 
+        filme2.setFimExibicoes(LocalDate.now().plusDays(45)); 
         filmes.add(filme2);
 
         // Filme 3: Show de Truman
@@ -153,8 +154,8 @@ public class Principal{
         filme3.setSinopse("Truman Burbank descobre que sua vida perfeita é na verdade um reality show televisionado 24 horas por dia, e deve escolher entre a segurança de sua prisão dourada ou a liberdade do mundo real.");
         filme3.setLegendado(false);
         filme3.setDublado(true);
-        filme3.setEstreia(LocalDate.now().minusDays(10)); //reflexividade
-        filme3.setFimExibicoes(LocalDate.now().plusDays(35)); //reflexividade
+        filme3.setEstreia(LocalDate.now().minusDays(10));
+        filme3.setFimExibicoes(LocalDate.now().plusDays(35)); 
         filmes.add(filme3);
 
         // Filme 4: Superman (James Gunn - 2025)
@@ -167,8 +168,8 @@ public class Principal{
         filme4.setSinopse("Clark Kent embarca em uma jornada para reconciliar sua herança kryptoniana com sua vida humana em Smallville. Ele deve encontrar o equilíbrio entre seu destino como super-herói e o desejo de viver uma vida normal com as pessoas que ama.");
         filme4.setLegendado(true);
         filme4.setDublado(true);
-        filme4.setEstreia(LocalDate.now().minusDays(8)); //reflexividade
-        filme4.setFimExibicoes(LocalDate.now().plusDays(37)); //reflexividade
+        filme4.setEstreia(LocalDate.now().minusDays(8)); 
+        filme4.setFimExibicoes(LocalDate.now().plusDays(37)); 
         filmes.add(filme4);
 
         Filme filme5 = new Filme();
@@ -180,8 +181,8 @@ public class Principal{
         filme5.setSinopse("Janeiro continua metendo os pés pelas mãos enquanto tenta administrar seu dinheiro inesperado, mas descobre que riqueza traz tantos problemas quanto pobreza.");
         filme5.setLegendado(false);
         filme5.setDublado(true);
-        filme5.setEstreia(LocalDate.now().minusDays(12)); //reflexividade
-        filme5.setFimExibicoes(LocalDate.now().plusDays(33));//reflexividade
+        filme5.setEstreia(LocalDate.now().minusDays(12)); 
+        filme5.setFimExibicoes(LocalDate.now().plusDays(33));
         filmes.add(filme5);
 
         Filme filme6 = new Filme();
@@ -193,8 +194,8 @@ public class Principal{
         filme6.setSinopse("Uma família pobre elabora um plano inteligente para se infiltrar na casa de uma família rica\n mas segredos obscuros surgem quando os mundos colidem de forma violenta.");
         filme6.setLegendado(true);
         filme6.setDublado(true);
-        filme6.setEstreia(LocalDate.now().minusDays(5));//reflexividade
-        filme6.setFimExibicoes(LocalDate.now().plusDays(50)); //reflexividade
+        filme6.setEstreia(LocalDate.now().minusDays(5));
+        filme6.setFimExibicoes(LocalDate.now().plusDays(50));
         filmes.add(filme6);
 
         Filme filme7 = new Filme();
@@ -206,8 +207,8 @@ public class Principal{
         filme7.setSinopse("Documentário íntimo que acompanha a vida e carreira de Ney Matogrosso\n explorando sua trajetória artística, quebra de tabus e a construção de uma identidade única na música brasileira.\nO filme revela o homem por trás do personagem.");
         filme7.setLegendado(false);
         filme7.setDublado(true); 
-        filme7.setEstreia(LocalDate.now().minusDays(3)); //relexividade
-        filme7.setFimExibicoes(LocalDate.now().plusDays(42)); //reflexividade
+        filme7.setEstreia(LocalDate.now().minusDays(3));
+        filme7.setFimExibicoes(LocalDate.now().plusDays(42));
         filmes.add(filme7);
 
         Filme filme8 = new Filme();
@@ -224,8 +225,8 @@ public class Principal{
         filmes.add(filme8);
 
         // INICIALIZAR SALAS
-        // 3 Salas 2D
-        for (int i = 0; i < 3; i++) {
+        // 2 Salas 2D
+        for (int i = 0; i < 2; i++) {
             Sala2D sala = new Sala2D();
             sala.setId(contador_salas++);
             sala.setPoltronasCadeirantes(4);
@@ -256,51 +257,26 @@ public class Principal{
 
         // CRIAR SESSÕES COM POLTRONAS OCUPADAS
         LocalDate hoje = LocalDate.now();
-        int sessaoIdCounter = 0;
+        LocalTime horarios[] = {
+            LocalTime.of(16, 30),
+            LocalTime.of(19, 0),
+            LocalTime.of(21, 20),
+            LocalTime.of(22, 0),
+        };
 
-        // Criar múltiplas sessões para cada filme
-        for (int dia = 0; dia < 5; dia++) {
-            LocalDate dataSessao = hoje.plusDays(dia);
+        var = contador_salas;
+        Random random = new Random();
 
-            LocalTime horarios []= {
-                LocalTime.of(14, 0), LocalTime.of(16, 30), 
-                LocalTime.of(19, 0), LocalTime.of(21, 30)
-            };
-
-            for (int horarioIndex = 0; horarioIndex < horarios.length; horarioIndex++) {
-                LocalTime horario = horarios[horarioIndex];
-                
-                // Distribuir filmes entre as sessões
-                int filmeIndex = (dia * 4 + horarioIndex) % filmes.size();
-                Filme filmeAtual = filmes.get(filmeIndex);
-                
-                // Criar sessões em diferentes tipos de sala
-                if (dia % 3 == 0) {
-                    // Sala 2D
-                    Sala2D sala2D = salas2D.get(dia % salas2D.size());
-                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario, sala2D, sessaoIdCounter++);
-                }
-                
-                if (dia % 3 == 1 || horarioIndex >= 2) {
-                    Sala3D sala3D = salas3D.get((dia + horarioIndex) % salas3D.size());
-                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario.plusMinutes(10), sala3D, sessaoIdCounter++);
-                }
-                
-                if (horarioIndex >= 2) {
-                    SalaIMAX salaIMAX = salasImax.get((dia + horarioIndex) % salasImax.size());
-                    criarSessaoComOcupacao(filmeAtual, dataSessao, horario.plusMinutes(20), salaIMAX, sessaoIdCounter++);
-                }
-            }
+        for(Filme filme : filmes){
+            int i_horario = random.nextInt(3); // pega de 0 a 3
+            criarSessaoComOcupacao(filme, hoje, horarios[i_horario], getSalaById(var--));
         }
 
-        contador_sessao = sessaoIdCounter;
-        
     }
-
     // Criadora de sessoes ja ocupadas
-    private static void criarSessaoComOcupacao(Filme filme, LocalDate data, LocalTime hora, Object sala, int idSessao) {
+    private static void criarSessaoComOcupacao(Filme filme, LocalDate data, LocalTime hora, Object sala) {
         Sessao sessao = new Sessao();
-        sessao.setId(idSessao);
+        sessao.setId(contador_sessao++);
         sessao.setFilme(filme);
         sessao.setData(data);
         sessao.setHora(hora);
@@ -310,7 +286,7 @@ public class Principal{
         int poltronasOcupadasCount = 0;
         
         // gerador chique de numeros aleatorios
-        java.util.Random random = new java.util.Random(idSessao + filme.getId());
+        java.util.Random random = new java.util.Random(contador_sessao + filme.getId());
         
         for (int fileira = 0; fileira < 4; fileira++) {
             for (int poltrona = 0; poltrona < 4; poltrona++) {
@@ -319,25 +295,6 @@ public class Principal{
                     poltronasOcupadas[fileira][poltrona] = true;
                     poltronasOcupadasCount++;
 
-                    Ingresso ingresso = new Ingresso();
-                    ingresso.setId(contador_ingresso++);
-                    ingresso.setSessao(sessao);
-                    ingresso.setFileira(fileira+1);
-                    ingresso.setPoltrona(poltrona+1);
-
-
-                    // fazendo aquela gambiarra denovo
-                    String tipo = "";
-                    if(sala instanceof Sala2D){
-                        tipo = "2D";
-                    }else if(sala instanceof Sala3D){
-                        tipo = "3D";
-                    }else if(sala instanceof SalaIMAX){
-                        tipo = "IMAX";
-                    }
-                    ingresso.setPrecoCompra(calcularPrecoIngresso(tipo, sala, random.nextBoolean()));//reflexividade
-                    ingresso.setDataHoraCompra(LocalDateTime.now().minusHours(random.nextInt(72)));
-                    seusIngressos.add(ingresso);
                 }
             }
         }
@@ -365,7 +322,7 @@ public class Principal{
         while(!certeza){
             filme.setNome(leitura.entDados("\nDigite o nome do filme: "));
             try {
-                certeza = Integer.parseInt(leitura.entDados("\nID: "+filme.getId()+ " "+ filme.getNome()+ "\nConfirmar(1) ou Cancelar(0): ")) == 1; // Reflexividade
+                certeza = Integer.parseInt(leitura.entDados("\nID: "+filme.getId()+ " "+ filme.getNome()+ "\nConfirmar(1) ou Cancelar(0): ")) == 1;
                 // não precisa de break o controle da variavel vai pelo certeza
             } catch (NumberFormatException e) {
                 System.out.print("\nDigite apenas numeros inteiros.");
